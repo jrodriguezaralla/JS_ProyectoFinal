@@ -17,7 +17,7 @@ $background_color_transparency: rgba(225, 227, 231, 0.5);
     display: grid;
     //-ms-grid-columns: (minmax(12rem, 1fr))[auto-fill];
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-    grid-gap: 6rem 2.5rem;
+    grid-gap: 2.5rem 2.5rem;
     //-webkit-box-align: end;
     //-ms-flex-align: end;
     align-items: end;

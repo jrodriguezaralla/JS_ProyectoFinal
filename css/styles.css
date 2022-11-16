@@ -8399,6 +8399,6 @@ textarea.form-control-lg {
   display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  grid-gap: 6rem 2.5rem;
+  grid-gap: 2.5rem 2.5rem;
   align-items: end;
   width: 100%; }
