@@ -1,0 +1,25 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+.icon--size{
+    font-size: 2.5rem;
+}
+
+$background_color_transparency: rgba(225, 227, 231, 0.5);
+/*Se coloca imagen de fondo en el body y con una opacidad de 0.5 para que se vea transparente y resalte texto*/
+.body--background{
+    background: linear-gradient($background_color_transparency,$background_color_transparency), url(../imagenes/fondo.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.grid {
+    display: -ms-grid;
+    display: grid;
+    //-ms-grid-columns: (minmax(12rem, 1fr))[auto-fill];
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    grid-gap: 6rem 2.5rem;
+    //-webkit-box-align: end;
+    //-ms-flex-align: end;
+    align-items: end;
+    width: 100%;
+}

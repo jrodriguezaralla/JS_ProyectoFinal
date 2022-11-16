@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- logo y titulo en la pestaña -->
+    <title>Enersys - Tienda Virtual</title>
+    <link rel="shortcut icon" href="./imagenes/favicon.png">
+
+    <!-- Inclusion de archivos CSS -->
+    <link rel="stylesheet" href="./css/styles.css">
+    
+</head>
+<body class="vh-100 vw-100 body--background">
+    <header>
+        <!-- Barra de navegación-->
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand mx-auto" href="#"><img src="./imagenes/logo.svg" alt="logo" width="80"></a>
+                <form class="d-flex mx-auto" role="search">
+                    <input class="form-control mx-2 pe-5 w-100" type="search" placeholder="Buscar..." aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
+                    <a class="nav-link active mx-2" aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-cart4 icon--size"></i></a>
+                </form>
+            </div>
+        </nav>
+
+        <!-- Ventana emergente de carrito de compras-->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de compras</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+            Carrito de compras
+            </div>
+        </div>
+    </header>
+    
+    <section >
+        <div class="container text-center my-5">
+            <div class="row">
+                <aside class="col-sm-3 bg-white d-flex flex-column p-4">
+                    <div class="container-fluid bg-primary">
+                        Filtro 1
+                    </div>
+                    <div class="container-fluid bg-success">
+                        Filtro 2
+                    </div>
+                    <div class="container-fluid bg-warning">
+                        Filtro 3
+                    </div>
+                </aside>
+                
+                <div class="col-sm-9 bg-white">
+                    <div class="grid col-md-10 p-4">
+
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/NPX25.jpg" alt="img_NPX25">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/NP7.2-12.jpg" alt="img_NP7.2-12">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/NPW45-12.jpg" alt="img_NPW45-12">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/NP12-12.jpg" alt="img_NP12-12">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/NP18-12.jpg" alt="img_NP18-12">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/NP24-12.jpg" alt="img_NP24-12">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/NP38-12.jpg" alt="img_NP38-12">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/NP65-12.jpg" alt="img_NP65-12">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/UXH90-12.jpg" alt="img_UXH90-12">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/UXH100-12.jpg" alt="img_UXH100-12">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+
+                        <div class="card py-2">
+                            <div class="d-flex flex-column justify-content-between align-items-center">
+                                <p>Producto 1</p>
+                                <img class="" src="./imagenes/foto" alt="bat_1">
+                                <p class="">precio </p>
+                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Inclusión de archivos JS-->
+    <script src="./app.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
