@@ -41,19 +41,62 @@
     <section >
         <div class="container text-center my-3 py-5 ">
             <div class="row ">
-                <aside class="col-sm-3 bg-white d-flex flex-column p-4 rounded-start">
-                    <div class="container-fluid bg-primary">
-                        Filtro 1
+                <aside class="col-sm-2 bg-white d-flex flex-column p-4 rounded-start">
+                    <div class="container-fluid p-2 border-top border-3">
+                        <h5 class="m-0 text-start">Marca:</h5>
+                        <ul class="list-group text-start border border-0">
+                            <li class="list-group-item border border-0">
+                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                <label class="form-check-label" for="firstRadio">Yuasa</label>
+                            </li>
+                            <li class="list-group-item border border-0">
+                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+                                <label class="form-check-label" for="secondRadio">Microcell</label>
+                            </li>
+                            <li class="list-group-item border border-0">
+                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
+                                <label class="form-check-label" for="thirdRadio">Enersys</label>
+                            </li>
+                        </ul>
+                        <div class="d-flex justify-content-start">
+                            <input class="btn btn-dark my-3" type="submit" value="Aplicar">
+                        </div>    
                     </div>
-                    <div class="container-fluid bg-success">
-                        Filtro 2
+
+                    <div class="container-fluid p-2 border-top border-3">
+                        <h5 class="m-0 text-start">Tecnología:</h5>
+                        <ul class="list-group text-start border border-0">
+                            <li class="list-group-item border border-0">
+                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                <label class="form-check-label" for="firstRadio">Plomo-Calcio</label>
+                            </li>
+                            <li class="list-group-item border border-0">
+                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+                                <label class="form-check-label" for="secondRadio">Plomo Puro</label>
+                            </li>
+                        </ul>
+                        <div class="d-flex justify-content-start">
+                            <input class="btn btn-dark my-3" type="submit" value="Aplicar">
+                        </div>
                     </div>
-                    <div class="container-fluid bg-warning">
-                        Filtro 3
+
+                    <div class="container-fluid p-2 border-top border-3">
+                        <h5 class="m-0 text-start">Rango de precios:</h5>
                     </div>
+
+                    <p class="text-start">Precio mínimo:</p>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-dark" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
+                    </div>
+
+                    <p class="text-start">Precio máximo:</p>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-dark" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                    </div>
+
                 </aside>
                 
-                <div class="col-sm-9 bg-white rounded-end">
+                <div class="col-sm-10 bg-white rounded-end">
                     <div class="grid col-md-10 p-4">
                         <!-------------------------------------------------------- BATERIAS YUASA NP ---------------------------------------------------------->
                         <div class="card">
@@ -62,9 +105,11 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">    
                                 <img class="card-img" src="./imagenes/NPX25.jpg" alt="img_NPX25">
-                                <p class="">Bateria VRLA 12V-5ah </p>
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-5ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -74,9 +119,11 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
                                 <img class="card-img" src="./imagenes/NP7.2-12.jpg" alt="img_NP7.2-12">
-                                <p class="">Bateria VRLA 12V-7ah </p>
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-7ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -86,9 +133,11 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
                                 <img class="card-img" src="./imagenes/NPW45-12.jpg" alt="img_NPW45-12">
-                                <p class="">Bateria VRLA 12V-8,5ah </p>
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-8,5ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
                     
@@ -98,9 +147,11 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
                                 <img class="card-img" src="./imagenes/NP12-12.jpg" alt="img_NP12-12">
-                                <p class="">Bateria VRLA 12V-12ah </p>
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-12ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -110,9 +161,11 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
                                 <img class="card-img" src="./imagenes/NP18-12.jpg" alt="img_NP18-12">
-                                <p class="">Bateria VRLA 12V-18ah </p>
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-18ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -122,9 +175,11 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
                                 <img class="card-img" src="./imagenes/NP24-12.jpg" alt="img_NP24-12">
-                                <p class="">Bateria VRLA 12V-24ah </p>
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-24ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -134,9 +189,11 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
                                 <img class="card-img" src="./imagenes/NP38-12.jpg" alt="img_NP38-12">
-                                <p class="">Bateria VRLA 12V-38ah </p>
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-38ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -146,9 +203,11 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
                                 <img class="card-img" src="./imagenes/NP65-12.jpg" alt="img_NP65-12">
-                                <p class="">Bateria VRLA 12V-65ah </p>
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-65ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -158,9 +217,11 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
                                 <img class="card-img" src="./imagenes/UXH90-12.jpg" alt="img_UXH90-12">
-                                <p class="">Bateria VRLA 12V-90ah </p>
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-90ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -170,9 +231,11 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
                                 <img class="card-img" src="./imagenes/UXH100-12.jpg" alt="img_UXH100-12">
-                                <p class="">Bateria VRLA 12V-100ah </p>
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-100ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -182,10 +245,12 @@
                                 <h5 class="m-0">MC5-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">    
-                                <img class="card-img" src="./imagenes" alt="img_MC5-12">
-                                <p class="">Bateria VRLA 12V-5ah </p>
+                                <img class="card-img" src="./imagenes/MC5-12.jpg" alt="img_MC5-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-5ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -194,10 +259,12 @@
                                 <h5 class="m-0">MC7-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MC7-12">
-                                <p class="">Bateria VRLA 12V-7ah </p>
+                                <img class="card-img" src="./imagenes/MC7-12.jpg" alt="img_MC7-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-7ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -206,10 +273,12 @@
                                 <h5 class="m-0">MCX36</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MCX36">
-                                <p class="">Bateria VRLA 12V-8ah </p>
+                                <img class="card-img" src="./imagenes/MCX36.jpg" alt="img_MCX36">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-8ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
                     
@@ -218,10 +287,12 @@
                                 <h5 class="m-0">MC12-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes/" alt="img_MC12-12">
-                                <p class="">Bateria VRLA 12V-12ah </p>
+                                <img class="card-img" src="./imagenes/MC12-12.jpg" alt="img_MC12-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-12ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -230,10 +301,12 @@
                                 <h5 class="m-0">MC17-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MC17-12">
-                                <p class="">Bateria VRLA 12V-17ah </p>
+                                <img class="card-img" src="./imagenes/MC17-12.jpg" alt="img_MC17-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-17ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -242,10 +315,12 @@
                                 <h5 class="m-0">MC24-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MC24-12">
-                                <p class="">Bateria VRLA 12V-24ah </p>
+                                <img class="card-img" src="./imagenes/MC24-12.jpg" alt="img_MC24-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-24ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -255,10 +330,12 @@
                                 <h5 class="m-0">MCE33-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MCE33-12">
-                                <p class="">Bateria VRLA 12V-33ah </p>
+                                <img class="card-img" src="./imagenes/MCE33-12.jpg" alt="img_MCE33-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-33ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -267,10 +344,12 @@
                                 <h5 class="m-0">MCE40-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MCE40-12">
-                                <p class="">Bateria VRLA 12V-40ah </p>
+                                <img class="card-img" src="./imagenes/MCE40-12.jpg" alt="img_MCE40-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-40ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -279,10 +358,12 @@
                                 <h5 class="m-0">MCE65-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MCE65-12">
-                                <p class="">Bateria VRLA 12V-65ah </p>
+                                <img class="card-img" src="./imagenes/MCE65-12.jpg" alt="img_MCE65-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-65ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -291,10 +372,12 @@
                                 <h5 class="m-0">MCE75-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MCE75-12">
-                                <p class="">Bateria VRLA 12V-75ah </p>
+                                <img class="card-img" src="./imagenes/MCE75-12.jpg" alt="img_MCE75-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-75ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -303,10 +386,12 @@
                                 <h5 class="m-0">MCE90-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MCE90-12">
-                                <p class="">Bateria VRLA 12V-90ah </p>
+                                <img class="card-img" src="./imagenes/MCE90-12.jpg" alt="img_MCE90-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-90ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -315,10 +400,12 @@
                                 <h5 class="m-0">MCE100-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MCE100-12">
-                                <p class="">Bateria VRLA 12V-100ah </p>
+                                <img class="card-img" src="./imagenes/MCE100-12.jpg" alt="img_MCE100-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-100ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -327,10 +414,12 @@
                                 <h5 class="m-0">MCE120-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MCE120-12">
-                                <p class="">Bateria VRLA 12V-120ah </p>
+                                <img class="card-img" src="./imagenes/MCE120-12.jpg" alt="img_MCE120-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-120ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
                         
@@ -339,10 +428,12 @@
                                 <h5 class="m-0">MCE150-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MCE150-12">
-                                <p class="">Bateria VRLA 12V-150ah </p>
+                                <img class="card-img" src="./imagenes/MCE150-12.jpg" alt="img_MCE150-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-150ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -351,10 +442,12 @@
                                 <h5 class="m-0">MCE200-12</h5>
                             </div>
                             <div class="d-flex flex-column justify-content-between align-items-center p-2">
-                                <img class="card-img" src="./imagenes" alt="img_MCE200-12">
-                                <p class="">Bateria VRLA 12V-200ah </p>
+                                <img class="card-img" src="./imagenes/MCE200-12.jpg" alt="img_MCE200-12">
+                                <p class="">Bateria VRLA PLOMO-CALCIO 12V-200ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -367,7 +460,9 @@
                                 <img class="card-img" src="./imagenes/SBSC11.jpg" alt="img_SBSC11">
                                 <p class="">Bateria VRLA PLOMO PURO 12V-92ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -379,7 +474,9 @@
                                 <img class="card-img" src="./imagenes/SBS100F.jpg" alt="img_SBS100F">
                                 <p class="">Bateria VRLA PLOMO PURO 12V-100ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -391,7 +488,9 @@
                                 <img class="card-img" src="./imagenes/SBS170F.jpg" alt="img_SBS170F">
                                 <p class="">Bateria VRLA PLOMO PURO 12V-170ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
@@ -403,7 +502,9 @@
                                 <img class="card-img" src="./imagenes/SBS190F.jpg" alt="img_SBS190F">
                                 <p class="">Bateria VRLA PLOMO PURO 12V-190ah </p>
                                 <p class="">precio </p>
-                                <a class="btn btn-dark agregar">Agregar al carrito</a>
+                                <div class="d-flex justify-content-center">
+                                    <input class="btn btn-dark" type="submit" value="Agregar al carrito">
+                                </div>
                             </div>
                         </div>
 
