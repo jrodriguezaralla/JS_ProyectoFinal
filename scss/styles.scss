@@ -5,6 +5,10 @@
     font-size: 2.5rem;
 }
 
+.badge--size{
+    font-size: 0.5rem;
+}
+
 $background_color_transparency: rgba(225, 227, 231, 0.5);
 /*Se coloca imagen de fondo en el body y con una opacidad de 0.5 para que se vea transparente y resalte texto*/
 .body--background{
