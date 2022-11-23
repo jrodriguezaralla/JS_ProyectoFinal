@@ -19,6 +19,7 @@ const STOCK_MC12_12 = 1000;
 /****************************************************************** DECLARACIÓN DE FUNCIONES *************************************************************/
 /*********************************************************************************************************************************************************/
 
+/* Función básica para comprobar nombre de usuario y contraseña */
 function comprobarUsuario (){
     let usuario = prompt("Ingrese nombre de usuario")
     let contraseña = prompt("Ingrese Contraseña")   
@@ -57,7 +58,7 @@ function comprobarUsuario (){
     }
 }
 
-
+/* Función para sumar productos dentro del carrito de compras */
 function sumarProducto() {
     let subtotal = 0
     let total = 0
@@ -88,5 +89,5 @@ function sumarProducto() {
 /*********************************************************************************************************************************************************/
 /********************************************************************* PRUEBA DE FUNCIONES ***************************************************************/
 /*********************************************************************************************************************************************************/
-//comprobarUsuario ()
-//sumarProducto ()
+comprobarUsuario ()
+sumarProducto ()
