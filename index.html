@@ -12,56 +12,59 @@
     <link rel="stylesheet" href="./css/styles.css">
     
 </head>
-<body class="vh-100 vw-100 body--background">
+<body class="vh-100 body--background">
     <header>
-        <!-- Barra de navegación-->
+        <!----------------------------------------------------------------------- Barra de navegación -------------------------------------------------------------------------------->
         <nav class="navbar bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand mx-auto" href="#"><img src="./imagenes/logo.svg" alt="logo" width="80"></a>
-                <form class="d-flex mx-auto" role="search">
-                    <input class="form-control mx-2" type="search" placeholder="Buscar..." aria-label="Search">
-                    <button class="btn btn-outline-dark mx-2" type="submit">Buscar</button>
-                    <a class="nav-link active mx-2 position-relative" aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                        <i class="bi bi-cart4 icon--size mx-2"></i>
-                        <span class="position-absolute top-50 start-100 translate-middle badge rounded-pill bg-danger">
-                            99+
-                            <span class="visually-hidden">unread messages</span>
+            <div class="container-fluid d-flex justify-content-around">
+                <a class="navbar-brand" href="#"><img src="./imagenes/logo.svg" alt="logo" width="80"></a>
+                <div class="d-flex flex-row">
+                    <form class="d-flex" role="search">
+                        <input class="form-control mx-2" type="search" placeholder="Buscar..." aria-label="Search">
+                        <button class="btn btn-outline-dark mx-2" type="submit">Buscar</button>
+                        <a class="nav-link active mx-2 position-relative me-5" aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <i class="bi bi-cart4 icon--size mx-2"></i>
+                            <span class="position-absolute top-50 start-100 translate-middle badge rounded-pill bg-danger me-5">
+                                99+
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                        </a>
+                    </form>
+                    <div class="d-flex justify-content-end align-items-center">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-dark ms-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Ingresar
+                        </button>
+                        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content="Cerrar sesión">
+                            <i class="bi bi-box-arrow-right icon--size ms-4"></i>
                         </span>
-                    </a>
-                </form>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Ingresar
-                </button>
-                
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">¡Bienvenido!</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Usuario:</label>
-                                    <input type="text" class="form-control" id="recipient-name">
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">¡Bienvenido!</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Usuario:</label>
+                                            <input type="text" class="form-control" id="recipient-name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Contraseña:</label>
+                                            <input type="password" class="form-control" id="recipient-password">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-dark">Continuar</button>
+                                        <button type="button" class="btn btn-link" data-bs-dismiss="modal">Crear cuenta</button>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Contraseña:</label>
-                                    <input type="password" class="form-control" id="recipient-name">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-dark">Continuar</button>
-                                <button type="button" class="btn btn-link" data-bs-dismiss="modal">Crear cuenta</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content="Cerrar sesión">
-                    <i class="bi bi-box-arrow-right icon--size mx-2"></i>
-                </span>
             </div>
         </nav>
 
@@ -570,10 +573,10 @@
     </section>
 
 
-    <!-- Inclusión de archivos JS-->
+    <!-------------------------------------------------------------------- Inclusión de archivos JS ---------------------------------------------------------------------------------->
     <script src="./app.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.esm.min.js"></script>
+    
 </body>
 </html>
