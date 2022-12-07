@@ -16,6 +16,25 @@ const STOCK_MC7_12 = 1000;
 const STOCK_MC12_12 = 1000; 
 
 /*********************************************************************************************************************************************************/
+/**************************************************************** DECLARACIÓN DE CONSTRUCTORES ***********************************************************/
+/*********************************************************************************************************************************************************/
+
+//constructor de objetos producto
+function crearProducto (marca, modelo, precio, disponible){
+    this.marca = marca.toUpperCase();
+    this.modelo = modelo.toUpperCase();
+    this.precio = parseFloat (precio)
+    this.disponible = disponible;
+}
+
+/*********************************************************************************************************************************************************/
+/******************************************************************** DECLARACIÓN DE ARRAYS **************************************************************/
+/*********************************************************************************************************************************************************/
+
+const carrito = [];
+
+
+/*********************************************************************************************************************************************************/
 /****************************************************************** DECLARACIÓN DE FUNCIONES *************************************************************/
 /*********************************************************************************************************************************************************/
 
@@ -65,6 +84,7 @@ function sumarProducto() {
     let cantidad = 0
     let precio = 0
     let continuar = 0
+    
 
     do {
         cantidad = parseInt(prompt("Ingrese cantidad de productos"))
@@ -86,8 +106,42 @@ function sumarProducto() {
     alert(`Total: ${total}$`)
 }
 
+function agregarProductoCarrito () {
+    let marca = ""
+    let modelo = ""
+    let precio = 0
+    let disponible = true
+    let continuar = ""
+    let i = 0
+
+    do {
+        marca = prompt("Ingrese marca de batería")
+        modelo = prompt ("Ingrese modelo de batería")
+        precio = parseFloat(prompt("Ingrese monto de producto"))
+        let aux = new crearProducto (marca, modelo, precio, disponible);
+        carrito.push (aux)
+        
+        continuar = prompt ("¿Desea seguir agregando productos? si/no")  
+        continuar = continuar.toUpperCase()
+        while (true){           
+            if(continuar === "SI"){
+                break;
+            } else if (continuar === "NO") {
+                break;
+                } else{
+                    alert("Opción no válida, vuelva a intentarlo")
+                    continuar = prompt ("¿Desea seguir agregando productos? si/no") 
+                }
+        }
+    } while (continuar === "SI");
+    console.log(carrito)
+}
+
 /*********************************************************************************************************************************************************/
 /********************************************************************* PRUEBA DE FUNCIONES ***************************************************************/
 /*********************************************************************************************************************************************************/
-comprobarUsuario ()
-sumarProducto ()
+//comprobarUsuario ()
+//sumarProducto ()
+agregarProductoCarrito () 
+const precios = carrito.map (producto => producto.precio)
+console.log (precios)
