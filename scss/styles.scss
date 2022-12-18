@@ -27,3 +27,19 @@ $background_color_transparency: rgba(225, 227, 231, 0.5);
     align-items: end;
     width: 100%;
 }
+
+input[type="number"]{
+    width: 70%;
+    text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.container-num{
+    width: 50%;
+}
+

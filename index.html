@@ -17,16 +17,16 @@
         <!----------------------------------------------------------------------- Barra de navegación -------------------------------------------------------------------------------->
         <nav class="navbar bg-light">
             <div class="container-fluid d-flex justify-content-around">
-                <a class="navbar-brand" href="#"><img src="./imagenes/logo.svg" alt="logo" width="80"></a>
+                <a class="navbar-brand" href="./index.html"><img src="./imagenes/logo.svg" alt="logo" width="80"></a>
                 <div class="d-flex flex-row">
                     <form class="d-flex" role="search">
-                        <input class="form-control mx-2" type="search" placeholder="Buscar..." aria-label="Search">
-                        <button class="btn btn-outline-dark mx-2" type="submit">Buscar</button>
-                        <a class="nav-link active mx-2 position-relative me-5" aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                            <i class="bi bi-cart4 icon--size mx-2"></i>
-                            <span class="position-absolute top-0 end-0 badge rounded-pill bg-danger ms-4 mt-2">0</span>
-                        </a>
+                        <input class="form-control mx-2" type="text" placeholder="Buscar..." aria-label="Search" id="inputForm">
+                        <button type="button" class="btn btn-outline-dark mx-2" id="btnBuscar">Buscar</button>
                     </form>
+                    <a class="nav-link active mx-2 position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <i class="bi bi-cart4 icon--size mx-2"></i>
+                        <span class="position-absolute top-0 end-0 badge rounded-pill bg-danger ms-4 mt-2" id="contadorCarrito">0</span>
+                    </a>
                 </div>
             </div>
         </nav>
@@ -38,7 +38,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" id="contenedorCarrito">
+                Agregue productos al carrito
                 <!--Se agregan elementos al presionar boton agregar producto carrito-->
+            </div>
+            <div id="totalCarrito">
+                <!--Se imprime total de carrito-->
             </div>
         </div>
     </header>
@@ -89,15 +93,11 @@
                         <h5 class="m-0 text-start">Rango de precios:</h5>
                     </div>
 
-                    <p class="text-start">Precio mínimo:</p>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-dark" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
-                    </div>
+                    <label for="customRange1" class="form-label">Precio mínimo:</label>
+                    <input type="range" class="form-range " id="customRange1">
 
-                    <p class="text-start">Precio máximo:</p>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-dark" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                    </div>
+                    <label for="customRange1" class="form-label">Precio máximo:</label>
+                    <input type="range" class="form-range" id="customRange2">
 
                 </aside>
 

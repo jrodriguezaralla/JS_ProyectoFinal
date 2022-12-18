@@ -6,6 +6,7 @@ productos = [
         "modelo" : "NPX25",
         "imagen" : "NPX25.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-5ah",
+        "contador" : 0,
         "precio" : 30.50
     },
     {
@@ -14,6 +15,7 @@ productos = [
         "modelo" : "NP7.2-12",
         "imagen" : "NP7.2-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-7ah",
+        "contador" : 0,
         "precio" : 38
     },
     {
@@ -22,6 +24,7 @@ productos = [
         "modelo" : "NPW45-12",
         "imagen" : "NPW45-12.jpg",
         "descripcion" :  "Bateria VRLA PLOMO-CALCIO 12V-8,5ah",
+        "contador" : 0,
         "precio" : 47
     },
     {
@@ -30,6 +33,7 @@ productos = [
         "modelo" : "NP12-12",
         "imagen" : "NP12-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-12ah",
+        "contador" : 0,
         "precio" : 73
     },
     {
@@ -38,6 +42,7 @@ productos = [
         "modelo" : "NP18-12",
         "imagen" : "NP18-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-18ah",
+        "contador" : 0,
         "precio" : 81
     },
     {
@@ -46,6 +51,7 @@ productos = [
         "modelo" : "NP24-12",
         "imagen" : "NP24-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-24ah",
+        "contador" : 0,
         "precio" : 140
     },
     {
@@ -54,6 +60,7 @@ productos = [
         "modelo" : "NP38-12",
         "imagen" : "NP38-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-38ah",
+        "contador" : 0,
         "precio" : 244
     },
     {
@@ -62,6 +69,7 @@ productos = [
         "modelo" : "NP65-12",
         "imagen" : "NP65-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-65ah",
+        "contador" : 0,
         "precio" : 381
     },
     {
@@ -70,6 +78,7 @@ productos = [
         "modelo" : "UXH90-12",
         "imagen" : "UXH90-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-90ah",
+        "contador" : 0,
         "precio" : 473
     },
     {
@@ -78,6 +87,7 @@ productos = [
         "modelo" : "UXH100-12",
         "imagen" : "UXH100-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-100ah",
+        "contador" : 0,
         "precio" : 502
     },
 /************************************************************************ Baterias Microcell *****************************************************************************************/
@@ -87,6 +97,7 @@ productos = [
         "modelo" : "MC5-12",
         "imagen" : "MC5-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-5ah",
+        "contador" : 0,
         "precio" : 18.50
     },
     {
@@ -95,6 +106,7 @@ productos = [
         "modelo" : "MC7-12",
         "imagen" : "MC7-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-7ah",
+        "contador" : 0,
         "precio" : 24.50
     },
     {
@@ -103,6 +115,7 @@ productos = [
         "modelo" : "MCX36",
         "imagen" : "MCX36.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-8ah",
+        "contador" : 0,
         "precio" : 30.50
     },
     {
@@ -111,6 +124,7 @@ productos = [
         "modelo" : "MC12-12",
         "imagen" : "MC12-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-12ah",
+        "contador" : 0,
         "precio" : 43
     },
     {
@@ -119,6 +133,7 @@ productos = [
         "modelo" : "MC17-12",
         "imagen" : "MC17-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-17ah",
+        "contador" : 0,
         "precio" : 55
     },
     {
@@ -127,6 +142,7 @@ productos = [
         "modelo" : "MC24-12",
         "imagen" : "MC24-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-24ah",
+        "contador" : 0,
         "precio" : 84
     },
     {
@@ -135,6 +151,7 @@ productos = [
         "modelo" : "MCE33-12",
         "imagen" : "MCE33-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-33ah",
+        "contador" : 0,
         "precio" : 111
     },
     {
@@ -143,6 +160,7 @@ productos = [
         "modelo" : "MCE40-12",
         "imagen" : "MCE40-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-40ah",
+        "contador" : 0,
         "precio" : 127
     },
     {
@@ -151,6 +169,7 @@ productos = [
         "modelo" : "MCE55-12",
         "imagen" : "MCE55-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-55ah",
+        "contador" : 0,
         "precio" : 198
     },
     {
@@ -159,6 +178,7 @@ productos = [
         "modelo" : "MCE65-12",
         "imagen" : "MCE65-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-65ah",
+        "contador" : 0,
         "precio" : 219
     },
     {
@@ -167,6 +187,7 @@ productos = [
         "modelo" : "MCE75-12",
         "imagen" : "MCE75-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-75ah",
+        "contador" : 0,
         "precio" : 257
     },
     {
@@ -175,6 +196,7 @@ productos = [
         "modelo" : "MCE90-12",
         "imagen" : "MCE90-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-90ah",
+        "contador" : 0,
         "precio" : 308
     },
     {
@@ -183,6 +205,7 @@ productos = [
         "modelo" : "MCE100-12",
         "imagen" : "MCE100-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-100ah",
+        "contador" : 0,
         "precio" : 313
     },
     {
@@ -191,6 +214,7 @@ productos = [
         "modelo" : "MCE120-12",
         "imagen" : "MCE120-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-120ah",
+        "contador" : 0,
         "precio" : 338
     },
     {
@@ -199,6 +223,7 @@ productos = [
         "modelo" : "MCE150-12",
         "imagen" : "MCE150-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-150ah",
+        "contador" : 0,
         "precio" : 500
     },
     {
@@ -207,6 +232,7 @@ productos = [
         "modelo" : "MCE200-12",
         "imagen" : "MCE200-12.jpg",
         "descripcion" : "Bateria VRLA PLOMO-CALCIO 12V-200ah",
+        "contador" : 0,
         "precio" : 628
     },
     /************************************************************************ Baterias SBS *****************************************************************************************/
@@ -217,6 +243,7 @@ productos = [
         "modelo" : "SBS C11",
         "imagen" : "SBSC11.jpg",
         "descripcion" : "Bateria VRLA PLOMO PURO 12V-92ah",
+        "contador" : 0,
         "precio" : 447
     },
     {
@@ -225,6 +252,7 @@ productos = [
         "modelo" : "SBS 100F",
         "imagen" : "SBS100F.jpg",
         "descripcion" : "Bateria VRLA PLOMO PURO 12V-100ah",
+        "contador" : 0,
         "precio" : 443
     },
     {
@@ -233,6 +261,7 @@ productos = [
         "modelo" : "SBS 170F",
         "imagen" : "SBS170F.jpg",
         "descripcion" : "Bateria VRLA PLOMO PURO 12V-170ah",
+        "contador" : 0,
         "precio" : 563
     },
     {
@@ -241,6 +270,7 @@ productos = [
         "modelo" : "SBS 190F",
         "imagen" : "SBS190F.jpg",
         "descripcion" : "Bateria VRLA PLOMO PURO 12V-190ah",
+        "contador" : 0,
         "precio" : 632
     }
 ]
