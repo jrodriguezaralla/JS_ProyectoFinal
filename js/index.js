@@ -7,8 +7,8 @@ const contenedorCarrito = document.querySelector("#contenedorCarrito")
 const contadorCarrito = document.querySelector("#contadorCarrito")
 const totalCarrito = document.querySelector("#totalCarrito")
 //const inputForm = document.querySelector("#inputForm")
-//const btnBuscar = document.querySelector("#btnBuscar")
-//btnBuscar.addEventListener('click', buscarProducto())
+const btnBuscar = document.querySelector("#btnBuscar")
+btnBuscar.addEventListener('click', buscarProducto())
 
 
 /*********************************************************************************************************************************************************/
@@ -111,8 +111,7 @@ function mostrarTotal (valor){
 }
 
 function buscarProducto (){
-    alert("hola")
-    //busqueda.preventDefault()
+    console.log("hola")
 }
 
 /*********************************************************************************************************************************************************/
