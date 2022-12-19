@@ -6,9 +6,9 @@ const listado = document.querySelector("#listado")
 const contenedorCarrito = document.querySelector("#contenedorCarrito")
 const contadorCarrito = document.querySelector("#contadorCarrito")
 const totalCarrito = document.querySelector("#totalCarrito")
-const inputForm = document.querySelector("#inputForm")
-const btnBuscar = document.querySelector("#btnBuscar")
-btnBuscar.addEventListener('click', buscarProducto())
+//const inputForm = document.querySelector("#inputForm")
+//const btnBuscar = document.querySelector("#btnBuscar")
+//btnBuscar.addEventListener('click', buscarProducto())
 
 
 /*********************************************************************************************************************************************************/
