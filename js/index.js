@@ -96,8 +96,18 @@ function sumarTotal (){
 }
 
 function mostrarTotal (valor){
-    totalCarrito.className = "h5 pb-2 text-dark border-top border-dark text-end px-2"
-    totalCarrito.innerText = `Total: ${valor} USD`
+    let div = document.createElement("div")
+    totalCarrito.innerHTML = ""
+    div.className = "d-flex justify-content-around p-2"
+    div.innerHTML = `
+                    <div class="d-flex justify-content-center align-items-center">
+                    <a class="btn btn-dark" href="../html/compra.html" role="button" target="_blank">Comprar</a>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <p>Total: ${valor} USD</p>
+                    </div>
+                    `
+    totalCarrito.append(div)
 }
 
 function buscarProducto (){
