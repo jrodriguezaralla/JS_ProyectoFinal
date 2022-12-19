@@ -103,8 +103,8 @@ function mostrarTotal (valor){
                     <div class="d-flex justify-content-center align-items-center">
                     <a class="btn btn-dark" href="../html/compra.html" role="button" target="_blank">Comprar</a>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center">
-                        <p>Total: ${valor} USD</p>
+                    <div class="d-flex justify-content-center align-items-center fs-4 fw-bold">
+                        <p class="m-0">Total: ${valor} USD</p>
                     </div>
                     `
     totalCarrito.append(div)
