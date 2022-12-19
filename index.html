@@ -25,7 +25,7 @@
                     <div class="vr"></div>
                     <a class="nav-link active mx-2 position-relative" aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <i class="bi bi-cart4 icon--size mx-2"></i>
-                        <span class="position-absolute top-50 start-50 ms-3 translate-middle badge rounded-pill bg-danger">
+                        <span class="position-absolute top-50 start-50 ms-3 translate-middle badge rounded-pill bg-danger" id="contadorCarrito">
                             0
                         </span>
                     </a>
@@ -40,8 +40,11 @@
                 <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de compras</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
-            Carrito de compras
+            <div class="offcanvas-body" id="contenedorCarrito">
+            Agregue productos al carrito
+            </div>
+            <div id="totalCarrito">
+
             </div>
         </div>
     </header>
