@@ -18,17 +18,19 @@
         <nav class="navbar bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand mx-auto" href="#"><img src="./imagenes/logo.svg" alt="logo" width="80"></a>
-                <form class="d-flex mx-auto" role="search">
-                    <input class="form-control mx-2" type="search" placeholder="Buscar..." aria-label="Search">
-                    <button class="btn btn-outline-dark mx-2" type="submit">Buscar</button>
+
+                <div class="hstack gap-3 mx-auto">
+                    <input class="form-control me-auto" type="text" placeholder="Buscar..." aria-label="Buscar...">
+                    <button type="button" class="btn btn-outline-dark">Buscar</button>
+                    <div class="vr"></div>
                     <a class="nav-link active mx-2 position-relative" aria-current="page" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <i class="bi bi-cart4 icon--size mx-2"></i>
-                        <span class="position-absolute top-50 start-100 translate-middle badge rounded-pill bg-danger">
-                            99+
-                            <span class="visually-hidden">unread messages</span>
+                        <span class="position-absolute top-50 start-50 ms-3 translate-middle badge rounded-pill bg-danger">
+                            0
                         </span>
                     </a>
-                </form>
+                </div>
+
             </div>
         </nav>
 
@@ -103,7 +105,7 @@
                 </aside>
                 
                 <div class="col-sm-10 bg-white rounded-end">
-                    <div class="grid col-md-10 p-4" class="listado">
+                    <div class="grid col-md-10 p-4" id="listado">
                         <!-- Listado de Productos -->
                     </div>
                 </div>
