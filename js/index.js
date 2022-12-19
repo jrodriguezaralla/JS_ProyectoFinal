@@ -8,15 +8,23 @@ const contadorCarrito = document.querySelector("#contadorCarrito")
 const totalCarrito = document.querySelector("#totalCarrito")
 //const inputForm = document.querySelector("#inputForm")
 const btnBuscar = document.querySelector("#btnBuscar")
-btnBuscar.addEventListener('click', buscarProducto())
+btnBuscar.onclick = () => {buscarProducto()}
 
+
+const linkCarrito = document.querySelector("#linkCarrito")
+linkCarrito.onclick = () => {agregarElmentoCarrito (carrito)}
 
 /*********************************************************************************************************************************************************/
 /******************************************************************** DECLARACIÓN DE ARRAYS **************************************************************/
 /*********************************************************************************************************************************************************/
 
-const carrito = []
+let carrito = []
+let carritoLS = JSON.parse(localStorage.getItem('carrito'))
 
+if (carritoLS){
+    carrito = carritoLS
+    contadorCarrito.innerText = `${carrito.length}`
+}
 
 /*********************************************************************************************************************************************************/
 /****************************************************************** DECLARACIÓN DE FUNCIONES *************************************************************/
@@ -53,45 +61,46 @@ function mostrarProductos () {
 function agregarProductoCarrito (id) {
     const productoSelecionado = productos.find(elemento => elemento.id === parseInt(id)) // busco por el id el producto que el usuario eligio agregar
     carrito.push(productoSelecionado) // lo pusheo al carrito
-    agregarElmentoCarrito (productoSelecionado)
+    localStorage.setItem('carrito',JSON.stringify(carrito))
     contadorCarrito.innerText = `${carrito.length}`
-    sumarTotal()
 }
 
-function agregarElmentoCarrito (dato){
-    let div = document.createElement("div")
-    if(carrito.length == 1){
+function agregarElmentoCarrito (dato){ 
+    if(carrito.length >= 1){
         contenedorCarrito.innerText = "" // Borro leyenda "Agregue productos al carrito"
-    }
-    div.className = "card mb-2"
-    div.innerHTML = `
-                    <div class="row w-100 align-items-center">
-                        <div class="col-md-4 ms-auto d-flex justify-content-center">
-                            <img src="./imagenes/${dato.imagen}" class="img-fluid rounded-start px-1 " alt="img_${dato.modelo}">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body p-0 px-1">
-                                <h5 class="card-title m-0 fs-6">${dato.marca} - ${dato.modelo}</h5>
-                                <p class="card-text m-0 fs-6">${dato.descripcion}</p>
-                                <div class="d-flex flex-row py-2 justify-content-between">
-                                    <div class="btn-group btn-group-sm container-num">
-                                        <button type="button" class="btn btn-dark btnWidth">-</button>
-                                        <input type="number" class="btn-outline-dark num-input" min="1" value ="1">
-                                        <button type="button" class="btn btn-dark btnWidth">+</button>
+        dato.forEach((elemento)=>{
+            let div = document.createElement("div")
+            div.className = "card mb-2"
+            div.innerHTML = `
+                            <div class="row w-100 align-items-center">
+                                <div class="col-md-4 ms-auto d-flex justify-content-center">
+                                    <img src="./imagenes/${elemento.imagen}" class="img-fluid rounded-start px-1 " alt="img_${elemento.modelo}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body p-0 px-1">
+                                        <h5 class="card-title m-0 fs-6">${elemento.marca} - ${elemento.modelo}</h5>
+                                        <p class="card-text m-0 fs-6">${elemento.descripcion}</p>
+                                        <div class="d-flex flex-row py-2 justify-content-between">
+                                            <div class="btn-group btn-group-sm container-num">
+                                                <button type="button" class="btn btn-dark btnWidth">-</button>
+                                                <input type="number" class="btn-outline-dark num-input" min="1" value ="1">
+                                                <button type="button" class="btn btn-dark btnWidth">+</button>
+                                            </div>
+                                            <p class="fw-bold fst-italic fs-5 m-0">${elemento.precio} USD</p>
+                                        </div>
                                     </div>
-                                    <p class="fw-bold fst-italic fs-5 m-0">${dato.precio} USD</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    `
-    
-    contenedorCarrito.append(div)
+                            `
+            contenedorCarrito.append(div)
+        })
+    }
+    sumarTotal()
 }
 
 function sumarTotal (){
     let auxiliar = carrito.map((el) => el.precio) 
-    let total = auxiliar.reduce((acumulador, elemento)=> acumulador + elemento,0)
+    let total = auxiliar.reduce((acumulador, elemento) => acumulador + elemento,0)
     mostrarTotal(total)
 }
 
