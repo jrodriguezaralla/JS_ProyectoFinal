@@ -6,30 +6,33 @@ const listado = document.querySelector("#listado")
 const contenedorCarrito = document.querySelector("#contenedorCarrito")
 const contadorCarrito = document.querySelector("#contadorCarrito")
 const totalCarrito = document.querySelector("#totalCarrito")
-//const inputForm = document.querySelector("#inputForm")
+let inputBuscar = document.querySelector("#inputBuscar")
+
+
 const btnBuscar = document.querySelector("#btnBuscar")
-btnBuscar.onclick = () => {buscarProducto()}
+btnBuscar.addEventListener('click',() => {
+    buscarProducto(inputBuscar.value)
+    //inputBuscar.innerText = ""
+}) 
 
 
 const linkCarrito = document.querySelector("#linkCarrito")
-linkCarrito.onclick = () => {agregarElmentoCarrito (carrito)}
+linkCarrito.addEventListener('click',() => {
+    agregarElmentoCarrito (carrito)
+})
 
 /*********************************************************************************************************************************************************/
 /******************************************************************** DECLARACIÓN DE ARRAYS **************************************************************/
 /*********************************************************************************************************************************************************/
 
-let carrito = []
-let carritoLS = JSON.parse(localStorage.getItem('carrito'))
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guardado un carrito en Local Storage lo asigno a carrito, sino le asigno un array vacio
 
-if (carritoLS){
-    carrito = carritoLS
-    contadorCarrito.innerText = `${carrito.length}`
-}
 
 /*********************************************************************************************************************************************************/
 /****************************************************************** DECLARACIÓN DE FUNCIONES *************************************************************/
 /*********************************************************************************************************************************************************/
 function mostrarProductos () {
+    contadorCarrito.innerText = `${carrito.length}` // actualizo contador de carrito con los items que tenga guardados
     productos.forEach(producto =>{
         let div = document.createElement("div")
         div.className = "card"
@@ -119,9 +122,11 @@ function mostrarTotal (valor){
     totalCarrito.append(div)
 }
 
-function buscarProducto (){
-    console.log("hola")
+function buscarProducto (valor){
+    console.log(`${valor}`)
 }
+
+
 
 /*********************************************************************************************************************************************************/
 /********************************************************************* PRUEBA DE FUNCIONES ***************************************************************/
