@@ -7,11 +7,12 @@ const contenedorCarrito = document.querySelector("#contenedorCarrito")
 const contadorCarrito = document.querySelector("#contadorCarrito")
 const totalCarrito = document.querySelector("#totalCarrito")
 let inputBuscar = document.querySelector("#inputBuscar")
-
+const formBuscar = document.querySelector("#formBuscar")
 
 const btnBuscar = document.querySelector("#btnBuscar")
 btnBuscar.addEventListener('click',() => {
     buscarProducto(inputBuscar.value)
+    formBuscar.reset()
     //inputBuscar.innerText = ""
 }) 
 
@@ -73,14 +74,14 @@ function agregarElmentoCarrito (dato){
         contenedorCarrito.innerText = "" // Borro leyenda "Agregue productos al carrito"
         dato.forEach((elemento)=>{
             let div = document.createElement("div")
-            div.className = "card mb-2"
+            div.className = "card mb-2 position-relative"
             div.innerHTML = `
                             <div class="row w-100 align-items-center">
                                 <div class="col-md-4 ms-auto d-flex justify-content-center">
                                     <img src="./imagenes/${elemento.imagen}" class="img-fluid rounded-start px-1 " alt="img_${elemento.modelo}">
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="card-body p-0 px-1">
+                                    <div class="card-body p-0 px-1 position-relative">
                                         <h5 class="card-title m-0 fs-6">${elemento.marca} - ${elemento.modelo}</h5>
                                         <p class="card-text m-0 fs-6">${elemento.descripcion}</p>
                                         <div class="d-flex flex-row py-2 justify-content-between">
@@ -94,6 +95,7 @@ function agregarElmentoCarrito (dato){
                                     </div>
                                 </div>
                             </div>
+                            <button type="button" class="position-absolute top-0 end-0 btn btn-outline-danger btn-sm me-1 mt-1" id="${elemento.id}"><i class="bi bi-trash"></i></button>
                             `
             contenedorCarrito.append(div)
         })
