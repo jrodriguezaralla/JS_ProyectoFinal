@@ -29,45 +29,38 @@ linkCarrito.addEventListener('click',() => {
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guardado un carrito en Local Storage lo asigno a carrito, sino le asigno un array vacio
 
+/*********************************************************************************************************************************************************/
+/********************************************************************** MOSTRAR PRODUCTOS ****************************************************************/
+/*********************************************************************************************************************************************************/
+
+contadorCarrito.innerText = `${carrito.length}` // actualizo contador de carrito con los items que tenga guardados
+productos.forEach(producto =>{
+    let div = document.createElement("div")
+    div.className = "card"
+    div.innerHTML = `
+                    <div class="card-header">
+                        <h5 class="m-0 fw-semibold fs-5">${producto.modelo}</h5>
+                    </div>
+                    <div class="d-flex flex-column justify-content-between align-items-center p-2">    
+                        <img class="card-img" src="./imagenes/${producto.imagen}" alt="img_${producto.modelo}">
+                        <p class="fw-lighter">${producto.descripcion}</p>
+                        <p class="fw-bold fst-italic fs-5">${producto.precio} USD</p>
+                        <div class="d-flex justify-content-center">
+                            <button id="agregar${producto.id}" class="btnAgregarCarrito btn btn-dark" type="submit">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    `
+    listado.append(div)
+    let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
+
+    btnAgregarCarrito.addEventListener('click',() => {
+            agregarProductoCarrito (producto.id)
+    })
+})
 
 /*********************************************************************************************************************************************************/
 /****************************************************************** DECLARACIÓN DE FUNCIONES *************************************************************/
 /*********************************************************************************************************************************************************/
-function mostrarProductos () {
-    contadorCarrito.innerText = `${carrito.length}` // actualizo contador de carrito con los items que tenga guardados
-    productos.forEach(producto =>{
-        let div = document.createElement("div")
-        div.className = "card"
-        div.innerHTML = `
-                        <div class="card-header">
-                            <h5 class="m-0 fw-semibold fs-5">${producto.modelo}</h5>
-                        </div>
-                        <div class="d-flex flex-column justify-content-between align-items-center p-2">    
-                            <img class="card-img" src="./imagenes/${producto.imagen}" alt="img_${producto.modelo}">
-                            <p class="fw-lighter">${producto.descripcion}</p>
-                            <p class="fw-bold fst-italic fs-5">${producto.precio} USD</p>
-                            <div class="d-flex justify-content-center">
-                                <button id="agregar${producto.id}" class="btnAgregarCarrito btn btn-dark" type="submit">Agregar al carrito</button>
-                            </div>
-                        </div>
-                        `
-        listado.append(div)
-        let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
-    
-        btnAgregarCarrito.addEventListener('click',() => {
-                agregarProductoCarrito (producto.id)
-        })
-    })
-
-/*    let btnAgregarCarrito = document.querySelectorAll('.btnAgregarCarrito') // NodeList = [button#1, button#2 .... , button#n]
-    
-    btnAgregarCarrito.forEach(el =>{
-        el.addEventListener('click',(e) => {
-            agregarProductoCarrito (e.id)
-            e.preventDefault()
-        })
-    })*/
-}
 
 function agregarProductoCarrito (id) {
     //const existe = carrito.some( (prod) => { prod.id === id})
@@ -102,8 +95,8 @@ function agregarElmentoCarrito (dato){
                                         <div class="d-flex flex-row py-2 justify-content-between">
                                             <div class="btn-group btn-group-sm container-num">
                                                 <button type="button" class="btn btn-dark btnWidth btnMenos" id="btnMenos${elemento.id}">-</button>
-                                                <input type="number" class="btn-outline-dark num-input inputContador" min="1" value ="1">
-                                                <button type="button" class="btn btn-dark btnWidth btnMas">+</button>
+                                                <input type="number" class="btn-outline-dark num-input inputCantidad" id="inputCantidad${elemento.id}" min="1" value ="1">
+                                                <button type="button" class="btn btn-dark btnWidth btnMas" id="btnMas${elemento.id}">+</button>
                                             </div>
                                             <p class="fw-bold fst-italic fs-5 m-0">${elemento.precio} USD</p>
                                         </div>
@@ -118,35 +111,25 @@ function agregarElmentoCarrito (dato){
             btnEliminarProd.addEventListener('click',() => {
                 eliminarDelCarrito(elemento.id)
             })
+
+            //asigno funcionalidad a boton de decrementar cantidad
+            let btnMenos = document.querySelector(`#btnMenos${elemento.id}`) // NodeList = [button#1, button#2 .... , button#n]
+            btnMenos.addEventListener('click',() => {
+                decrementarCantidad(elemento.id)
+            })
+
+            //asigno funcionalidad a boton de incrementar cantidad
+            let btnMas = document.querySelector(`#btnMas${elemento.id}`) // NodeList = [button#1, button#2 .... , button#n]
+            btnMas.addEventListener('click',() => {
+                incrementarCantidad(elemento.id)
+            })
+
+            //asigno funcionalidad a input cantidad
+            let inputCantidad = document.querySelector(`#inputCantidad${elemento.id}`) // NodeList = [button#1, button#2 .... , button#n]
+            inputCantidad.addEventListener('click',() => {
+                decrementarCantidad(elemento.id)
+            })            
         })
-
-        //asigno funcionalidad a boton de decrementar cantidad
-       /* let btnMenos = document.querySelectorAll('.btnMenos') // NodeList = [button#1, button#2 .... , button#n]
-        btnMenos.forEach(el =>{
-            el.addEventListener('click',(e) => {
-                decrementarCantidad(parseInt(e.target.id))
-                e.preventDefault()
-            })
-        })*/
-
-        //asigno funcionalidad a input del contador
-        // let btnEliminarProd = document.querySelectorAll('.btnEliminarProd') // NodeList = [button#1, button#2 .... , button#n]
-        // btnEliminarProd.forEach(el =>{
-        //     el.addEventListener('click',(e) => {
-        //         eliminarDelCarrito(e.target.id)
-        //         e.preventDefault()
-        //     })
-        // })
-
-        //asigno funcionalidad a boton de incrementar cantidad
-       /* let btnMas = document.querySelectorAll('.btnMas') // NodeList = [button#1, button#2 .... , button#n]
-        //console.log(btnMas)
-        btnMas.forEach(el =>{
-            el.addEventListener('click',(e) => {
-                incrementarCantidad(parseInt(e.target.id))
-                e.preventDefault()
-            })
-        })*/
     }
     sumarTotal()
 
@@ -192,24 +175,20 @@ function eliminarDelCarrito (id){
 }
 
 function decrementarCantidad (id){
-    const productoSelecionado = carrito.indexof(carrito.find( (elemento) => elemento.id === id ))
-    productoSelecionado.cantidad--
-    if(productoSelecionado.cantidad < 0) productoSelecionado.cantidad = 0
+    let productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
+    carrito[productoSelecionado].cantidad--
+    carrito[productoSelecionado].cantidad <= 1 ? carrito[productoSelecionado].cantidad = 1 : carrito[productoSelecionado].cantidad 
+    
 
     localStorage.setItem('carrito',JSON.stringify(carrito))
     agregarElmentoCarrito (carrito)
 }
 
 function incrementarCantidad (id){
-    const productoSelecionado = carrito.find( (elemento) => elemento.id === id )
-    //console.log(id)
-    //carrito[productoSelecionado.id].cantidad = carrito[productoSelecionado.id].cantidad+1
+    const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
+    carrito[productoSelecionado].cantidad++
 
     localStorage.setItem('carrito',JSON.stringify(carrito))
     agregarElmentoCarrito (carrito)
 }
 
-/*********************************************************************************************************************************************************/
-/********************************************************************* PRUEBA DE FUNCIONES ***************************************************************/
-/*********************************************************************************************************************************************************/
-mostrarProductos();
