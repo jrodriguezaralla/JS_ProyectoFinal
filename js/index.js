@@ -13,7 +13,6 @@ const btnBuscar = document.querySelector("#btnBuscar")
 btnBuscar.addEventListener('click',() => {
     buscarProducto(inputBuscar.value)
     formBuscar.reset()
-    //inputBuscar.innerText = ""
 }) 
 
 
@@ -76,14 +75,14 @@ function agregarElmentoCarrito (dato){
             let div = document.createElement("div")
             div.className = "card mb-2 position-relative"
             div.innerHTML = `
-                            <div class="row w-100 align-items-center">
+                            <div class="row w-100 align-items-center ms-1">
                                 <div class="col-md-4 ms-auto d-flex justify-content-center">
                                     <img src="./imagenes/${elemento.imagen}" class="img-fluid rounded-start px-1 " alt="img_${elemento.modelo}">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body p-0 px-1 position-relative">
                                         <h5 class="card-title m-0 fs-6">${elemento.marca} - ${elemento.modelo}</h5>
-                                        <p class="card-text m-0 fs-6">${elemento.descripcion}</p>
+                                        <p class="card-text m-0 fs-6 pe-1">${elemento.descripcion}</p>
                                         <div class="d-flex flex-row py-2 justify-content-between">
                                             <div class="btn-group btn-group-sm container-num">
                                                 <button type="button" class="btn btn-dark btnWidth">-</button>
@@ -95,9 +94,16 @@ function agregarElmentoCarrito (dato){
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="position-absolute top-0 end-0 btn btn-outline-danger btn-sm me-1 mt-1" id="${elemento.id}"><i class="bi bi-trash"></i></button>
+                            <button type="button" class="position-absolute top-0 end-0 btn btn-outline-danger btn-sm me-1 mt-1 btnEliminarProd"><i class="bi bi-trash"></i></button>
                             `
             contenedorCarrito.append(div)
+        })
+        let btnEliminarProd = document.querySelectorAll('.btnEliminarProd') // NodeList = [button#1, button#2 .... , button#n]
+        btnEliminarProd.forEach(el =>{
+            el.addEventListener('click',(e) => {
+                eliminarDelCarrito(e.target.id)
+                e.preventDefault()
+            })
         })
     }
     sumarTotal()
@@ -128,6 +134,17 @@ function buscarProducto (valor){
     console.log(`${valor}`)
 }
 
+function eliminarDelCarrito (id){
+    const productoSelecionado = carrito.find( (elemento) => elemento.id === parseInt(id) )
+    carrito.splice(productoSelecionado,1)
+    localStorage.setItem('carrito',JSON.stringify(carrito))
+    contadorCarrito.innerText = `${carrito.length}`
+    agregarElmentoCarrito (carrito)
+    if (carrito.length === 0){
+        contenedorCarrito.innerHTML = ""
+        contenedorCarrito.innerText = "Agregue productos al carrito"
+    }
+}
 
 
 /*********************************************************************************************************************************************************/
