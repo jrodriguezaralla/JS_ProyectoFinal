@@ -18,6 +18,7 @@ inputBuscar.addEventListener('keyup', e=>{
 
 
 
+
 const linkCarrito = document.querySelector("#linkCarrito")
 linkCarrito.addEventListener('click',() => {
     agregarElmentoCarrito (carrito)
@@ -63,17 +64,19 @@ productos.forEach(producto =>{
 /*********************************************************************************************************************************************************/
 
 function agregarProductoCarrito (id) {
-    //const existe = carrito.some( (prod) => { prod.id === id})
+    const existe = carrito.some( (prod) => prod.id === id)
 
-    /*if(existe){
+    if(existe){
         carrito[id].cantidad++
-        ///console.log("hola")
-    } else{*/
+        console.log(carrito[id].cantidad)
+        localStorage.setItem('carrito',JSON.stringify(carrito))
+    } else{
+        
         const productoSelecionado = productos.find(elemento => elemento.id === id) // busco por el id el producto que el usuario eligio agregar
         carrito.push(productoSelecionado) // lo pusheo al carrito
         localStorage.setItem('carrito',JSON.stringify(carrito))
         contadorCarrito.innerText = `${carrito.length}`
-   // }
+    }
     
 }
 
@@ -112,23 +115,25 @@ function agregarElmentoCarrito (dato){
                 eliminarDelCarrito(elemento.id)
             })
 
+            
             //asigno funcionalidad a boton de decrementar cantidad
-            let btnMenos = document.querySelector(`#btnMenos${elemento.id}`) // NodeList = [button#1, button#2 .... , button#n]
+            let btnMenos = document.querySelector(`#btnMenos${elemento.id}`)
             btnMenos.addEventListener('click',() => {
                 decrementarCantidad(elemento.id)
             })
 
             //asigno funcionalidad a boton de incrementar cantidad
-            let btnMas = document.querySelector(`#btnMas${elemento.id}`) // NodeList = [button#1, button#2 .... , button#n]
+            let btnMas = document.querySelector(`#btnMas${elemento.id}`)
             btnMas.addEventListener('click',() => {
                 incrementarCantidad(elemento.id)
             })
 
             //asigno funcionalidad a input cantidad
-            let inputCantidad = document.querySelector(`#inputCantidad${elemento.id}`) // NodeList = [button#1, button#2 .... , button#n]
-            inputCantidad.addEventListener('click',() => {
-                decrementarCantidad(elemento.id)
-            })            
+            let inputCantidad = document.querySelector(`#inputCantidad${elemento.id}`)
+            btnMas.addEventListener('click',() => {
+                inputCantidad.value = mostrarCantidad(elemento.id)
+            })
+
         })
     }
     sumarTotal()
@@ -179,7 +184,7 @@ function decrementarCantidad (id){
     carrito[productoSelecionado].cantidad--
     carrito[productoSelecionado].cantidad <= 1 ? carrito[productoSelecionado].cantidad = 1 : carrito[productoSelecionado].cantidad 
     
-
+    cantidad.value = carrito[productoSelecionado].cantidad
     localStorage.setItem('carrito',JSON.stringify(carrito))
     agregarElmentoCarrito (carrito)
 }
@@ -192,3 +197,7 @@ function incrementarCantidad (id){
     agregarElmentoCarrito (carrito)
 }
 
+function mostrarCantidad(id){
+    const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
+    return productoSelecionado.cantidad
+}
