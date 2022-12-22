@@ -17,7 +17,7 @@
         <!-- Barra de navegación-->
         <nav class="navbar bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand mx-auto" href="#"><img src="./imagenes/logo.svg" alt="logo" width="80"></a>
+                <a class="navbar-brand mx-auto" href="./index.html"><img src="./imagenes/logo.svg" alt="logo" width="80"></a>
 
                 <div class="hstack gap-3 mx-auto">
                     <input class="form-control me-auto" type="text" placeholder="Buscar..." aria-label="Buscar..." id="inputBuscar">
@@ -59,20 +59,20 @@
                         <h5 class="m-0 text-start">Marca:</h5>
                         <ul class="list-group text-start border border-0">
                             <li class="list-group-item border border-0">
-                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                <input class="form-check-input me-1 filtro_marca" type="radio" name="listGroupRadio" value="Yuasa" id="firstRadio" checked>
                                 <label class="form-check-label" for="firstRadio">Yuasa</label>
                             </li>
                             <li class="list-group-item border border-0">
-                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+                                <input class="form-check-input me-1 filtro_marca" type="radio" name="listGroupRadio" value="Microcell" id="secondRadio">
                                 <label class="form-check-label" for="secondRadio">Microcell</label>
                             </li>
                             <li class="list-group-item border border-0">
-                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
+                                <input class="form-check-input me-1 filtro_marca" type="radio" name="listGroupRadio" value="Enersys" id="thirdRadio">
                                 <label class="form-check-label" for="thirdRadio">Enersys</label>
                             </li>
                         </ul>
                         <div class="d-flex justify-content-start">
-                            <input class="btn btn-dark my-3" type="submit" value="Aplicar">
+                            <input class="btn btn-dark my-3" type="button" value="Aplicar" id="btnFiltroMarcas">
                         </div>    
                     </div>
 

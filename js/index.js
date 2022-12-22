@@ -3,13 +3,19 @@
 /*********************************************************************************************************************************************************/
 // Contenedor de listado de productos
 const listado = document.querySelector("#listado") 
+
 const contenedorCarrito = document.querySelector("#contenedorCarrito")
 const contadorCarrito = document.querySelector("#contadorCarrito")
 const totalCarrito = document.querySelector("#totalCarrito")
-let inputBuscar = document.querySelector("#inputBuscar")
-const formBuscar = document.querySelector("#formBuscar")
 
-inputBuscar.addEventListener('keyup', e=>{
+const linkCarrito = document.querySelector("#linkCarrito")
+linkCarrito.addEventListener('click',() => {
+    agregarElmentoCarrito (carrito)
+})
+
+const formBuscar = document.querySelector("#formBuscar")
+let inputBuscar = document.querySelector("#inputBuscar")
+inputBuscar.addEventListener('keyup', (e)=>{
     if (e.key === "Escape") e.target.value = ""
     if(e.target.matches("#inputBuscar")){
         document.querySelectorAll(".card_producto").forEach(producto => {
@@ -21,14 +27,16 @@ inputBuscar.addEventListener('keyup', e=>{
     e.preventDefault()
 })
 
-
-
-
-
-const linkCarrito = document.querySelector("#linkCarrito")
-linkCarrito.addEventListener('click',() => {
-    agregarElmentoCarrito (carrito)
+const filtroMarca = document.querySelectorAll(".filtro_marca")
+const btnFiltroMarcas = document.querySelector("#btnFiltroMarcas")
+btnFiltroMarcas.addEventListener('click',() => {
+    filtroMarcas()
 })
+
+
+
+
+
 
 /*********************************************************************************************************************************************************/
 /******************************************************************** DECLARACIÓN DE ARRAYS **************************************************************/
@@ -100,7 +108,7 @@ function agregarElmentoCarrito (dato){
                                 <div class="col-md-8">
                                     <div class="card-body p-0 px-1 position-relative">
                                         <h5 class="card-title m-0 fs-6">${elemento.marca} - ${elemento.modelo}</h5>
-                                        <p class="card-text m-0 fs-6 pe-2">${elemento.descripcion}</p>
+                                        <p class="card-text m-0 fs-6 pe-3">${elemento.descripcion}</p>
                                         <div class="d-flex flex-row py-2 justify-content-between">
                                             <div class="btn-group btn-group-sm container-num">
                                                 <button type="button" class="btn btn-dark btnWidth btnMenos" id="btnMenos${elemento.id}">-</button>
@@ -208,4 +216,36 @@ function setearCantidad(id, valor){
     carrito[productoSelecionado].cantidad = valor
     localStorage.setItem('carrito',JSON.stringify(carrito))
     sumarTotal ()
+}
+function filtroMarcas (){
+    filtroMarca.forEach((e)=>{
+        if (e.checked == true){
+            const productosFiltrados = productos.filter(elemento => elemento.marca.toLowerCase() == e.value.toLowerCase()) // busco por el id el producto que el usuario eligio agregar
+            listado.innerHTML = ""
+            productosFiltrados.forEach(producto =>{
+                let div = document.createElement("div")
+                div.className = "card card_producto"
+                div.innerHTML = `
+                                <div class="card-header">
+                                    <h5 class="m-0 fw-semibold fs-5">${producto.modelo}</h5>
+                                </div>
+                                <div class="d-flex flex-column justify-content-between align-items-center p-2">    
+                                    <img class="card-img" src="./imagenes/${producto.imagen}" alt="img_${producto.modelo}">
+                                    <p class="fw-lighter">${producto.descripcion}</p>
+                                    <p class="fw-bold fst-italic fs-5">${producto.precio} USD</p>
+                                    <div class="d-flex justify-content-center">
+                                        <button id="agregar${producto.id}" class="btnAgregarCarrito btn btn-dark" type="submit">Agregar al carrito</button>
+                                    </div>
+                                </div>
+                                `
+                listado.append(div)
+                let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
+            
+                btnAgregarCarrito.addEventListener('click',() => {
+                        agregarProductoCarrito (producto.id)
+                })
+            })
+        
+        }
+    })
 }
