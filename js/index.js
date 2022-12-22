@@ -10,6 +10,7 @@ let inputBuscar = document.querySelector("#inputBuscar")
 const formBuscar = document.querySelector("#formBuscar")
 
 inputBuscar.addEventListener('keyup', e=>{
+    if (e.key === "Escape") e.target.value = ""
     if(e.target.matches("#inputBuscar")){
         document.querySelectorAll(".card_producto").forEach(producto => {
             producto.textContent.toLowerCase().includes(e.target.value.toLowerCase())
@@ -19,7 +20,7 @@ inputBuscar.addEventListener('keyup', e=>{
     }
     e.preventDefault()
 })
-//formBuscar.reset()
+
 
 
 
@@ -99,7 +100,7 @@ function agregarElmentoCarrito (dato){
                                 <div class="col-md-8">
                                     <div class="card-body p-0 px-1 position-relative">
                                         <h5 class="card-title m-0 fs-6">${elemento.marca} - ${elemento.modelo}</h5>
-                                        <p class="card-text m-0 fs-6 pe-1">${elemento.descripcion}</p>
+                                        <p class="card-text m-0 fs-6 pe-2">${elemento.descripcion}</p>
                                         <div class="d-flex flex-row py-2 justify-content-between">
                                             <div class="btn-group btn-group-sm container-num">
                                                 <button type="button" class="btn btn-dark btnWidth btnMenos" id="btnMenos${elemento.id}">-</button>
@@ -120,8 +121,7 @@ function agregarElmentoCarrito (dato){
                 eliminarDelCarrito(elemento.id)
             })
 
-            //asigno funcionalidad a input cantidad
-            //let inputCantidad = document.querySelector(`#inputCantidad${id}`)
+            
 
             //asigno funcionalidad a boton de decrementar cantidad
             let btnMenos = document.querySelector(`#btnMenos${elemento.id}`)
@@ -135,10 +135,11 @@ function agregarElmentoCarrito (dato){
                 incrementarCantidad(elemento.id)
             })
 
-            
-            /*btnMas.addEventListener('click',() => {
-                inputCantidad.value = mostrarCantidad(elemento.id)
-            })*/
+            //asigno funcionalidad a input cantidad
+            let inputCantidad = document.querySelector(`#inputCantidad${elemento.id}`)
+            inputCantidad.addEventListener('input',() => {
+                setearCantidad(elemento.id, inputCantidad.value)
+            })
 
         })
     }
@@ -202,7 +203,9 @@ function incrementarCantidad (id){
     agregarElmentoCarrito (carrito)
 }
 
-/*function mostrarCantidad(id){
+function setearCantidad(id, valor){
     const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
-    return productoSelecionado.cantidad
-}*/
+    carrito[productoSelecionado].cantidad = valor
+    localStorage.setItem('carrito',JSON.stringify(carrito))
+    sumarTotal ()
+}
