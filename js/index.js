@@ -8,11 +8,16 @@ const contadorCarrito = document.querySelector("#contadorCarrito")
 const totalCarrito = document.querySelector("#totalCarrito")
 let inputBuscar = document.querySelector("#inputBuscar")
 const formBuscar = document.querySelector("#formBuscar")
+
 inputBuscar.addEventListener('keyup', e=>{
     if(e.target.matches("#inputBuscar")){
-
+        document.querySelectorAll(".card_producto").forEach(producto => {
+            producto.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+            ?producto.classList.remove("filtro")
+            :producto.classList.add("filtro")
+        })
     }
-    console.log(e.target.value)
+    e.preventDefault()
 })
 //formBuscar.reset()
 
@@ -37,7 +42,7 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guar
 contadorCarrito.innerText = `${carrito.length}` // actualizo contador de carrito con los items que tenga guardados
 productos.forEach(producto =>{
     let div = document.createElement("div")
-    div.className = "card"
+    div.className = "card card_producto"
     div.innerHTML = `
                     <div class="card-header">
                         <h5 class="m-0 fw-semibold fs-5">${producto.modelo}</h5>
