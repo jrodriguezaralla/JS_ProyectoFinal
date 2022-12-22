@@ -59,15 +59,15 @@
                         <h5 class="m-0 text-start">Marca:</h5>
                         <ul class="list-group text-start border border-0">
                             <li class="list-group-item border border-0">
-                                <input class="form-check-input me-1 filtro_marca" type="radio" name="listGroupRadio" value="Yuasa" id="firstRadio" checked>
+                                <input class="form-check-input me-1 filtro_marca" type="radio" name="listGroupRadio" value="Yuasa" id="YuasaRadio">
                                 <label class="form-check-label" for="firstRadio">Yuasa</label>
                             </li>
                             <li class="list-group-item border border-0">
-                                <input class="form-check-input me-1 filtro_marca" type="radio" name="listGroupRadio" value="Microcell" id="secondRadio">
+                                <input class="form-check-input me-1 filtro_marca" type="radio" name="listGroupRadio" value="Microcell" id="MicrocellRadio">
                                 <label class="form-check-label" for="secondRadio">Microcell</label>
                             </li>
                             <li class="list-group-item border border-0">
-                                <input class="form-check-input me-1 filtro_marca" type="radio" name="listGroupRadio" value="Enersys" id="thirdRadio">
+                                <input class="form-check-input me-1 filtro_marca" type="radio" name="listGroupRadio" value="Enersys" id="EnersysRadio">
                                 <label class="form-check-label" for="thirdRadio">Enersys</label>
                             </li>
                         </ul>
@@ -80,16 +80,16 @@
                         <h5 class="m-0 text-start">Tecnología:</h5>
                         <ul class="list-group text-start border border-0">
                             <li class="list-group-item border border-0">
-                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                <input class="form-check-input me-1 filtro_tecnologia" type="radio" name="listGroupRadio" value="Calcio" id="PlomoCalcioRadio">
                                 <label class="form-check-label" for="firstRadio">Plomo-Calcio</label>
                             </li>
                             <li class="list-group-item border border-0">
-                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+                                <input class="form-check-input me-1 filtro_tecnologia" type="radio" name="listGroupRadio" value="Puro" id="PlomoPuroRadio">
                                 <label class="form-check-label" for="secondRadio">Plomo Puro</label>
                             </li>
                         </ul>
                         <div class="d-flex justify-content-start">
-                            <input class="btn btn-dark my-3" type="submit" value="Aplicar">
+                            <input class="btn btn-dark my-3" type="button" value="Aplicar" id="btnFiltroTecnologias">
                         </div>
                     </div>
 
@@ -102,6 +102,12 @@
 
                     <label for="customRange2" class="form-label">Precio máximo:</label>
                     <input type="range" class="form-range" id="customRange2">
+
+                    <div class="container-fluid p-2 border-top border-3">
+                        <div class="d-flex justify-content-start">
+                            <input class="btn btn-dark my-3" type="button" value="Limpiar Filtros" id="btnLimpiarFiltros">
+                        </div>
+                    </div>
 
                 </aside>
                 

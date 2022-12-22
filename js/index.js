@@ -33,8 +33,16 @@ btnFiltroMarcas.addEventListener('click',() => {
     filtroMarcas()
 })
 
+const filtroTecnologia = document.querySelectorAll(".filtro_tecnologia")
+const btnFiltroTecnologias = document.querySelector("#btnFiltroTecnologias")
+btnFiltroTecnologias.addEventListener('click',() => {
+    filtroTecnologias()
+})
 
-
+const btnLimpiarFiltros = document.querySelector("#btnLimpiarFiltros")
+btnLimpiarFiltros.addEventListener('click',() => {
+    mostrarElementos(productos)
+})
 
 
 
@@ -49,29 +57,8 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guar
 /*********************************************************************************************************************************************************/
 
 contadorCarrito.innerText = `${carrito.length}` // actualizo contador de carrito con los items que tenga guardados
-productos.forEach(producto =>{
-    let div = document.createElement("div")
-    div.className = "card card_producto"
-    div.innerHTML = `
-                    <div class="card-header">
-                        <h5 class="m-0 fw-semibold fs-5">${producto.modelo}</h5>
-                    </div>
-                    <div class="d-flex flex-column justify-content-between align-items-center p-2">    
-                        <img class="card-img" src="./imagenes/${producto.imagen}" alt="img_${producto.modelo}">
-                        <p class="fw-lighter">${producto.descripcion}</p>
-                        <p class="fw-bold fst-italic fs-5">${producto.precio} USD</p>
-                        <div class="d-flex justify-content-center">
-                            <button id="agregar${producto.id}" class="btnAgregarCarrito btn btn-dark" type="submit">Agregar al carrito</button>
-                        </div>
-                    </div>
-                    `
-    listado.append(div)
-    let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
+mostrarElementos(productos)
 
-    btnAgregarCarrito.addEventListener('click',() => {
-            agregarProductoCarrito (producto.id)
-    })
-})
 
 /*********************************************************************************************************************************************************/
 /****************************************************************** DECLARACIÓN DE FUNCIONES *************************************************************/
@@ -217,35 +204,48 @@ function setearCantidad(id, valor){
     localStorage.setItem('carrito',JSON.stringify(carrito))
     sumarTotal ()
 }
+
 function filtroMarcas (){
     filtroMarca.forEach((e)=>{
         if (e.checked == true){
             const productosFiltrados = productos.filter(elemento => elemento.marca.toLowerCase() == e.value.toLowerCase()) // busco por el id el producto que el usuario eligio agregar
-            listado.innerHTML = ""
-            productosFiltrados.forEach(producto =>{
-                let div = document.createElement("div")
-                div.className = "card card_producto"
-                div.innerHTML = `
-                                <div class="card-header">
-                                    <h5 class="m-0 fw-semibold fs-5">${producto.modelo}</h5>
-                                </div>
-                                <div class="d-flex flex-column justify-content-between align-items-center p-2">    
-                                    <img class="card-img" src="./imagenes/${producto.imagen}" alt="img_${producto.modelo}">
-                                    <p class="fw-lighter">${producto.descripcion}</p>
-                                    <p class="fw-bold fst-italic fs-5">${producto.precio} USD</p>
-                                    <div class="d-flex justify-content-center">
-                                        <button id="agregar${producto.id}" class="btnAgregarCarrito btn btn-dark" type="submit">Agregar al carrito</button>
-                                    </div>
-                                </div>
-                                `
-                listado.append(div)
-                let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
-            
-                btnAgregarCarrito.addEventListener('click',() => {
-                        agregarProductoCarrito (producto.id)
-                })
-            })
-        
+            mostrarElementos(productosFiltrados)
         }
+    })
+}
+
+function filtroTecnologias(){
+    filtroTecnologia.forEach((e)=>{
+        if (e.checked == true){
+            const productosFiltrados = productos.filter(elemento => elemento.descripcion.includes(e.value.toUpperCase())) // busco si en descripcion esta la palabra PURO o CALCIO
+            mostrarElementos(productosFiltrados)
+        }
+    })
+}
+
+function mostrarElementos (array){
+    listado.innerHTML = ""
+    array.forEach(producto =>{
+        let div = document.createElement("div")
+        div.className = "card card_producto"
+        div.innerHTML = `
+                        <div class="card-header">
+                            <h5 class="m-0 fw-semibold fs-5">${producto.modelo}</h5>
+                        </div>
+                        <div class="d-flex flex-column justify-content-between align-items-center p-2">    
+                            <img class="card-img" src="./imagenes/${producto.imagen}" alt="img_${producto.modelo}">
+                            <p class="fw-lighter">${producto.descripcion}</p>
+                            <p class="fw-bold fst-italic fs-5">${producto.precio} USD</p>
+                            <div class="d-flex justify-content-center">
+                                <button id="agregar${producto.id}" class="btnAgregarCarrito btn btn-dark" type="submit">Agregar al carrito</button>
+                            </div>
+                        </div>
+                        `
+        listado.append(div)
+        let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
+    
+        btnAgregarCarrito.addEventListener('click',() => {
+                agregarProductoCarrito (producto.id)
+        })
     })
 }
