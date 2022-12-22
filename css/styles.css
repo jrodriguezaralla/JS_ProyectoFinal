@@ -8420,3 +8420,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .container-num {
   width: 50%; }
+
+.filtro {
+  display: none; }

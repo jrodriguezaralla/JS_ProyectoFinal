@@ -12,7 +12,7 @@ inputBuscar.addEventListener('keyup', e=>{
     if(e.target.matches("#inputBuscar")){
 
     }
-    //console.log(e.target.value)
+    console.log(e.target.value)
 })
 //formBuscar.reset()
 
@@ -98,7 +98,7 @@ function agregarElmentoCarrito (dato){
                                         <div class="d-flex flex-row py-2 justify-content-between">
                                             <div class="btn-group btn-group-sm container-num">
                                                 <button type="button" class="btn btn-dark btnWidth btnMenos" id="btnMenos${elemento.id}">-</button>
-                                                <input type="number" class="btn-outline-dark num-input inputCantidad" id="inputCantidad${elemento.id}" min="1">
+                                                <input type="number" class="btn-outline-dark num-input inputCantidad" id="inputCantidad${elemento.id}" min="1" value="${elemento.cantidad}">
                                                 <button type="button" class="btn btn-dark btnWidth btnMas" id="btnMas${elemento.id}">+</button>
                                             </div>
                                             <p class="fw-bold fst-italic fs-5 m-0">${elemento.precio} USD</p>
@@ -115,7 +115,8 @@ function agregarElmentoCarrito (dato){
                 eliminarDelCarrito(elemento.id)
             })
 
-            
+            //asigno funcionalidad a input cantidad
+            //let inputCantidad = document.querySelector(`#inputCantidad${id}`)
 
             //asigno funcionalidad a boton de decrementar cantidad
             let btnMenos = document.querySelector(`#btnMenos${elemento.id}`)
@@ -180,27 +181,18 @@ function eliminarDelCarrito (id){
 }
 
 function decrementarCantidad (id){
-    //asigno funcionalidad a input cantidad
-    let inputCantidad = document.querySelector(`#inputCantidad${id}`)
     let productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
     carrito[productoSelecionado].cantidad--
     carrito[productoSelecionado].cantidad <= 1 ? carrito[productoSelecionado].cantidad = 1 : carrito[productoSelecionado].cantidad 
     
-    
-    inputCantidad.value = carrito[productoSelecionado].cantidad
     localStorage.setItem('carrito',JSON.stringify(carrito))
     agregarElmentoCarrito (carrito)
 }
 
 function incrementarCantidad (id){
-    //asigno funcionalidad a input cantidad
-    let inputCantidad = document.querySelector(`#inputCantidad${id}`)
     const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
     carrito[productoSelecionado].cantidad++
 
-    
-    inputCantidad.value = carrito[productoSelecionado].cantidad
-    console.log(inputCantidad.value)
     localStorage.setItem('carrito',JSON.stringify(carrito))
     agregarElmentoCarrito (carrito)
 }
