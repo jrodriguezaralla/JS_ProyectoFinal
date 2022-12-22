@@ -115,24 +115,25 @@ function agregarElmentoCarrito (dato){
                 eliminarDelCarrito(elemento.id)
             })
 
-            
+            //asigno funcionalidad a input cantidad
+            let inputCantidad = document.querySelector(`#inputCantidad${elemento.id}`)
+
             //asigno funcionalidad a boton de decrementar cantidad
             let btnMenos = document.querySelector(`#btnMenos${elemento.id}`)
             btnMenos.addEventListener('click',() => {
-                decrementarCantidad(elemento.id)
+                decrementarCantidad(elemento.id,inputCantidad)
             })
 
             //asigno funcionalidad a boton de incrementar cantidad
             let btnMas = document.querySelector(`#btnMas${elemento.id}`)
             btnMas.addEventListener('click',() => {
-                incrementarCantidad(elemento.id)
+                incrementarCantidad(elemento.id, inputCantidad)
             })
 
-            //asigno funcionalidad a input cantidad
-            let inputCantidad = document.querySelector(`#inputCantidad${elemento.id}`)
-            btnMas.addEventListener('click',() => {
+            
+            /*btnMas.addEventListener('click',() => {
                 inputCantidad.value = mostrarCantidad(elemento.id)
-            })
+            })*/
 
         })
     }
@@ -147,7 +148,7 @@ function agregarElmentoCarrito (dato){
 }
 
 function sumarTotal (){
-    let auxiliar = carrito.map((el) => el.precio) 
+    let auxiliar = carrito.map((el) => el.precio*el.cantidad) 
     let total = auxiliar.reduce((acumulador, elemento) => acumulador + elemento,0)
     mostrarTotal(total)
 }
@@ -179,7 +180,7 @@ function eliminarDelCarrito (id){
     agregarElmentoCarrito (carrito)
 }
 
-function decrementarCantidad (id){
+function decrementarCantidad (id, cantidad){
     let productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
     carrito[productoSelecionado].cantidad--
     carrito[productoSelecionado].cantidad <= 1 ? carrito[productoSelecionado].cantidad = 1 : carrito[productoSelecionado].cantidad 
@@ -189,15 +190,16 @@ function decrementarCantidad (id){
     agregarElmentoCarrito (carrito)
 }
 
-function incrementarCantidad (id){
+function incrementarCantidad (id, cantidad){
     const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
     carrito[productoSelecionado].cantidad++
 
+    cantidad.value = carrito[productoSelecionado].cantidad
     localStorage.setItem('carrito',JSON.stringify(carrito))
     agregarElmentoCarrito (carrito)
 }
 
-function mostrarCantidad(id){
+/*function mostrarCantidad(id){
     const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
     return productoSelecionado.cantidad
-}
+}*/
