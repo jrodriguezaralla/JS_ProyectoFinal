@@ -3,27 +3,27 @@
 /*********************************************************************************************************************************************************/
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guardado un carrito en Local Storage lo asigno a carrito, sino le asigno un array vacio
+//arrays auxiliarers con copia de productos para no modificar el original al ordenarlos
 const productosMayor = [...productos]
 const productosMenor = [...productos]
 
 /*********************************************************************************************************************************************************/
 /****************************************************************** DECLARACIÓN DE VARIABLES *************************************************************/
 /*********************************************************************************************************************************************************/
-// Contenedor de listado de productos
-const listado = document.querySelector("#listado") 
 
-const contenedorCarrito = document.querySelector("#contenedorCarrito")
-const contadorCarrito = document.querySelector("#contadorCarrito")
-const totalCarrito = document.querySelector("#totalCarrito")
+const listado = document.querySelector("#listado") // Contenedor de listado de productos
+const contenedorCarrito = document.querySelector("#contenedorCarrito") // contenedor donde se muestran los productos en la venta de carrito
+const contadorCarrito = document.querySelector("#contadorCarrito") // Contador de productos dentro del carrito, aparece en rojo indicando cantidades
+const totalCarrito = document.querySelector("#totalCarrito") // contenedor para mostrar el precio total dentro del carrito
 
-const linkCarrito = document.querySelector("#linkCarrito")
+const linkCarrito = document.querySelector("#linkCarrito") // al presionar sobre el logo del carrito llamo a la función para mostrar los elementos en el carrito
 linkCarrito.addEventListener('click',() => {
     agregarElmentoCarrito (carrito)
 })
 
-const formBuscar = document.querySelector("#formBuscar")
-let inputBuscar = document.querySelector("#inputBuscar")
-inputBuscar.addEventListener('keyup', (e)=>{
+let inputBuscar = document.querySelector("#inputBuscar") // barra de busqueda
+// se agrega evento para busqueda en tiempo real
+inputBuscar.addEventListener('keyup', (e)=>{ 
     if (e.key === "Escape") e.target.value = ""
     if(e.target.matches("#inputBuscar")){
         document.querySelectorAll(".card_producto").forEach(producto => {
@@ -35,28 +35,31 @@ inputBuscar.addEventListener('keyup', (e)=>{
     e.preventDefault()
 })
 
-const filtroMarca = document.querySelectorAll(".filtro_marca")
+//eventos para filtrar por marcas
 const btnFiltroMarcas = document.querySelector("#btnFiltroMarcas")
 btnFiltroMarcas.addEventListener('click',() => {
     filtroMarcas()
 })
 
-const filtroTecnologia = document.querySelectorAll(".filtro_tecnologia")
+//eventos para filtrar por tecnologia
 const btnFiltroTecnologias = document.querySelector("#btnFiltroTecnologias")
 btnFiltroTecnologias.addEventListener('click',() => {
     filtroTecnologias()
 })
 
+//limpio los filtros seleccionados
 const btnLimpiarFiltros = document.querySelector("#btnLimpiarFiltros")
 btnLimpiarFiltros.addEventListener('click',() => {
     mostrarElementos(productos)
 })
 
+//Filtro para ordenar de mayor a menor precio
 const mayorPrecio = document.querySelector("#mayorPrecio")
 mayorPrecio.addEventListener('click',() => {
     mostrarElementos(productosMayor.sort(((a, b) => b.precio - a.precio)))
 })
 
+//Filtro para ordenar de menor a mayor precio
 const menorPrecio = document.querySelector("#menorPrecio")
 menorPrecio.addEventListener('click',() => {
     mostrarElementos(productosMenor.sort(((a, b) => a.precio - b.precio)))
@@ -67,13 +70,13 @@ menorPrecio.addEventListener('click',() => {
 /*********************************************************************************************************************************************************/
 
 contadorCarrito.innerText = `${carrito.length}` // actualizo contador de carrito con los items que tenga guardados
-mostrarElementos(productos)
+mostrarElementos(productos) //muestro productos de forma dinamica
 
 
 /*********************************************************************************************************************************************************/
 /****************************************************************** DECLARACIÓN DE FUNCIONES *************************************************************/
 /*********************************************************************************************************************************************************/
-
+//Función para agregar prodcutos al carrito de compras
 function agregarProductoCarrito (id) {
     const existe = carrito.some( (prod) => prod.id === id)
 
@@ -90,6 +93,7 @@ function agregarProductoCarrito (id) {
     
 }
 
+//Función para mostrar en pantalla los productos que van siendo agregados al carrito
 function agregarElmentoCarrito (dato){ 
     if(carrito.length >= 1){
         contenedorCarrito.innerText = "" // Borro leyenda "Agregue productos al carrito"
@@ -119,27 +123,25 @@ function agregarElmentoCarrito (dato){
                             <button id="eliminar${elemento.id}" type="button" class="position-absolute top-0 end-0 btn btn-outline-danger btn-sm me-1 mt-1 btnEliminarProd"><i class="bi bi-trash"></i></button>
                             `
             contenedorCarrito.append(div)
-            //asigno funcionalidad a boton de eliminar producto
+            //asigno funcionalidad a cada boton de eliminar producto
             let btnEliminarProd = document.querySelector(`#eliminar${elemento.id}`) // NodeList = [button#1, button#2 .... , button#n]
             btnEliminarProd.addEventListener('click',() => {
                 eliminarDelCarrito(elemento.id)
             })
 
-            
-
-            //asigno funcionalidad a boton de decrementar cantidad
+            //asigno funcionalidad a cada boton de decrementar cantidad
             let btnMenos = document.querySelector(`#btnMenos${elemento.id}`)
             btnMenos.addEventListener('click',() => {
                 decrementarCantidad(elemento.id)
             })
 
-            //asigno funcionalidad a boton de incrementar cantidad
+            //asigno funcionalidad a cada boton de incrementar cantidad
             let btnMas = document.querySelector(`#btnMas${elemento.id}`)
             btnMas.addEventListener('click',() => {
                 incrementarCantidad(elemento.id)
             })
 
-            //asigno funcionalidad a input cantidad
+            //asigno funcionalidad a cada input cantidad
             let inputCantidad = document.querySelector(`#inputCantidad${elemento.id}`)
             inputCantidad.addEventListener('input',() => {
                 setearCantidad(elemento.id, inputCantidad.value)
@@ -147,9 +149,9 @@ function agregarElmentoCarrito (dato){
 
         })
     }
-    sumarTotal()
+    sumarTotal() // actualizo el total del carrito
 
-    //limpio el contenedor
+    // Si no hay productos limpio el contenedor
     if (carrito.length === 0){
         contenedorCarrito.innerHTML = ""
         contenedorCarrito.innerText = "Agregue productos al carrito"
@@ -157,12 +159,14 @@ function agregarElmentoCarrito (dato){
     }
 }
 
+//Función para sumar el total del carrito
 function sumarTotal (){
     let auxiliar = carrito.map((el) => el.precio*el.cantidad) 
     let total = auxiliar.reduce((acumulador, elemento) => acumulador + elemento,0)
     mostrarTotal(total)
 }
 
+//Función para mostrar en pantalla el total del carrito y el boton de comprar
 function mostrarTotal (valor){
     let div = document.createElement("div")
     totalCarrito.innerHTML = ""
@@ -178,10 +182,7 @@ function mostrarTotal (valor){
     totalCarrito.append(div)
 }
 
-function buscarProducto (valor){
-    console.log(`${valor}`)
-}
-
+//Función para eliminar los productos del carrito
 function eliminarDelCarrito (id){
     const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
     carrito.splice(productoSelecionado,1)
@@ -190,6 +191,7 @@ function eliminarDelCarrito (id){
     agregarElmentoCarrito (carrito)
 }
 
+//Funcion para decrementar las cantidades del producto seleccionado
 function decrementarCantidad (id){
     let productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
     carrito[productoSelecionado].cantidad--
@@ -199,6 +201,7 @@ function decrementarCantidad (id){
     agregarElmentoCarrito (carrito)
 }
 
+//Funcion para incrementar las cantidades del producto seleccionado
 function incrementarCantidad (id){
     const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
     carrito[productoSelecionado].cantidad++
@@ -207,6 +210,7 @@ function incrementarCantidad (id){
     agregarElmentoCarrito (carrito)
 }
 
+//Función para caputrar la cantidad de productos ingresados manualmente
 function setearCantidad(id, valor){
     const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
     carrito[productoSelecionado].cantidad = parseInt(valor)
@@ -214,7 +218,9 @@ function setearCantidad(id, valor){
     sumarTotal ()
 }
 
+//Funcion para filtrar por marca
 function filtroMarcas (){
+    const filtroMarca = document.querySelectorAll(".filtro_marca")
     filtroMarca.forEach((e)=>{
         if (e.checked == true){
             const productosFiltrados = productos.filter(elemento => elemento.marca.toLowerCase() == e.value.toLowerCase()) // busco por el id el producto que el usuario eligio agregar
@@ -223,7 +229,9 @@ function filtroMarcas (){
     })
 }
 
+//Funcion para filtrar por Tecnología
 function filtroTecnologias(){
+    const filtroTecnologia = document.querySelectorAll(".filtro_tecnologia")
     filtroTecnologia.forEach((e)=>{
         if (e.checked == true){
             const productosFiltrados = productos.filter(elemento => elemento.descripcion.includes(e.value.toUpperCase())) // busco si en descripcion esta la palabra PURO o CALCIO
@@ -232,6 +240,7 @@ function filtroTecnologias(){
     })
 }
 
+//Funcion para mostrar en pantalla los productos que recibe por parametros
 function mostrarElementos (array){
     listado.innerHTML = ""
     array.forEach(producto =>{
