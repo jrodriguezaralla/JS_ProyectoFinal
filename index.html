@@ -97,11 +97,18 @@
                         <h5 class="m-0 text-start">Rango de precios:</h5>
                     </div>
 
-                    <label for="customRange1" class="form-label">Precio mínimo:</label>
-                    <input type="range" class="form-range " id="customRange1">
+                    <div class="d-flex justify-content-around">
+                        <label for="RangePrecioMinimo" class="form-label">Precio mínimo:</label>
+                        <div class="value text-start fw-semibold" id="precioMinimo">USD </div>
+                    </div>
+                    <input type="range" class="slider mb-3 inputRange" id="RangePrecioMinimo" min="1" max="300" value="1">
+                    
 
-                    <label for="customRange2" class="form-label">Precio máximo:</label>
-                    <input type="range" class="form-range" id="customRange2">
+                    <div class="d-flex justify-content-around">
+                        <label for="RangePrecioMaximo" class="form-label">Precio máximo:</label>
+                        <div class="value text-start fw-semibold" id="precioMaximo">USD </div>
+                    </div>
+                    <input type="range" class="slider mb-3 inputRange" id="RangePrecioMaximo"min="1" max="300" value="1">
 
                     <div class="container-fluid p-2 border-top border-3">
                         <div class="d-flex justify-content-start">
