@@ -48,7 +48,6 @@ let precioMinimo = document.querySelector("#precioMinimo")
 const RangePrecioMinimo = document.querySelector("#RangePrecioMinimo").oninput = function(){
         let x = (this.value-this.min)/(this.max-this.min)*100
         let color = 'linear-gradient(to right, #fff 0%, #404040 ' + x +'%, #fff '+ x + '%, #fff 100%)'
-        console.log(color)
         this.style.background = color
         precioMinimo.innerText = `USD ${this.value}`
 }
@@ -57,7 +56,6 @@ let precioMaximo = document.querySelector("#precioMaximo")
 const RangePrecioMaximo = document.querySelector("#RangePrecioMaximo").oninput = function(){
     let x = (this.value-this.min)/(this.max-this.min)*100
     let color = 'linear-gradient(to right, #fff 0%, #404040 ' + x +'%, #fff '+ x + '%, #fff 100%)'
-    console.log(color)
     this.style.background = color
     precioMaximo.innerText = `USD ${this.value}`
 }
@@ -70,6 +68,16 @@ const RangePrecioMaximo = document.querySelector("#RangePrecioMaximo").oninput =
 /*********************************************************************************************************************************************************/
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guardado un carrito en Local Storage lo asigno a carrito, sino le asigno un array vacio
+const productosMayor = productos.map((el)=> el.precio)
+console.log(productosMayor)
+const aux = Math.max(...productosMayor)
+console.log(aux)
+
+const productosMenor = productos;
+
+
+
+productosMayor.sort(((a, b) => b.precio - a.precio));
 
 /*********************************************************************************************************************************************************/
 /********************************************************************** MOSTRAR PRODUCTOS ****************************************************************/
