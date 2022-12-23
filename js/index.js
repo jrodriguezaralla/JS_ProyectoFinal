@@ -45,15 +45,17 @@ btnLimpiarFiltros.addEventListener('click',() => {
 })
 
 let precioMinimo = document.querySelector("#precioMinimo")
-const RangePrecioMinimo = document.querySelector("#RangePrecioMinimo").oninput = function(){
-        let x = (this.value-this.min)/(this.max-this.min)*100
-        let color = 'linear-gradient(to right, #fff 0%, #404040 ' + x +'%, #fff '+ x + '%, #fff 100%)'
-        this.style.background = color
-        precioMinimo.innerText = `USD ${this.value}`
+let RangePrecioMinimo = document.querySelector("#RangePrecioMinimo").oninput = function(){
+    this.max = Math.max(...productos.map((el)=> el.precio))
+    let x = (this.value-this.min)/(this.max-this.min)*100
+    let color = 'linear-gradient(to right, #fff 0%, #404040 ' + x +'%, #fff '+ x + '%, #fff 100%)'
+    this.style.background = color
+    precioMinimo.innerText = `USD ${this.value}`
 }
 
 let precioMaximo = document.querySelector("#precioMaximo")
-const RangePrecioMaximo = document.querySelector("#RangePrecioMaximo").oninput = function(){
+let RangePrecioMaximo = document.querySelector("#RangePrecioMaximo").oninput = function(){
+    this.max = Math.max(...productos.map((el)=> el.precio))
     let x = (this.value-this.min)/(this.max-this.min)*100
     let color = 'linear-gradient(to right, #fff 0%, #404040 ' + x +'%, #fff '+ x + '%, #fff 100%)'
     this.style.background = color
@@ -68,18 +70,16 @@ const RangePrecioMaximo = document.querySelector("#RangePrecioMaximo").oninput =
 /*********************************************************************************************************************************************************/
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guardado un carrito en Local Storage lo asigno a carrito, sino le asigno un array vacio
-const productosMayor = productos
-//const productosMayor = productos.map((el)=> el.precio)
-console.log(productosMayor)
-//const aux = Math.max(...productosMayor)
-//console.log(aux)
-
-const productosMenor = productos;
+const productosMayor = [...productos]
+const productosMenor = [...productos]
 
 
 
 productosMayor.sort(((a, b) => b.precio - a.precio));
+productosMenor.sort(((a, b) => a.precio - b.precio));
 
+console.log(productosMayor)
+console.log(productosMenor)
 /*********************************************************************************************************************************************************/
 /********************************************************************** MOSTRAR PRODUCTOS ****************************************************************/
 /*********************************************************************************************************************************************************/
