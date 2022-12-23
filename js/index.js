@@ -68,10 +68,11 @@ const RangePrecioMaximo = document.querySelector("#RangePrecioMaximo").oninput =
 /*********************************************************************************************************************************************************/
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guardado un carrito en Local Storage lo asigno a carrito, sino le asigno un array vacio
-const productosMayor = productos.map((el)=> el.precio)
+const productosMayor = productos
+//const productosMayor = productos.map((el)=> el.precio)
 console.log(productosMayor)
-const aux = Math.max(...productosMayor)
-console.log(aux)
+//const aux = Math.max(...productosMayor)
+//console.log(aux)
 
 const productosMenor = productos;
 
