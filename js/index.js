@@ -1,4 +1,12 @@
 /*********************************************************************************************************************************************************/
+/******************************************************************** DECLARACIÓN DE ARRAYS **************************************************************/
+/*********************************************************************************************************************************************************/
+
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guardado un carrito en Local Storage lo asigno a carrito, sino le asigno un array vacio
+const productosMayor = [...productos]
+const productosMenor = [...productos]
+
+/*********************************************************************************************************************************************************/
 /****************************************************************** DECLARACIÓN DE VARIABLES *************************************************************/
 /*********************************************************************************************************************************************************/
 // Contenedor de listado de productos
@@ -44,42 +52,16 @@ btnLimpiarFiltros.addEventListener('click',() => {
     mostrarElementos(productos)
 })
 
-let precioMinimo = document.querySelector("#precioMinimo")
-let RangePrecioMinimo = document.querySelector("#RangePrecioMinimo").oninput = function(){
-    this.max = Math.max(...productos.map((el)=> el.precio))
-    let x = (this.value-this.min)/(this.max-this.min)*100
-    let color = 'linear-gradient(to right, #fff 0%, #404040 ' + x +'%, #fff '+ x + '%, #fff 100%)'
-    this.style.background = color
-    precioMinimo.innerText = `USD ${this.value}`
-}
+const mayorPrecio = document.querySelector("#mayorPrecio")
+mayorPrecio.addEventListener('click',() => {
+    mostrarElementos(productosMayor.sort(((a, b) => b.precio - a.precio)))
+})
 
-let precioMaximo = document.querySelector("#precioMaximo")
-let RangePrecioMaximo = document.querySelector("#RangePrecioMaximo").oninput = function(){
-    this.max = Math.max(...productos.map((el)=> el.precio))
-    let x = (this.value-this.min)/(this.max-this.min)*100
-    let color = 'linear-gradient(to right, #fff 0%, #404040 ' + x +'%, #fff '+ x + '%, #fff 100%)'
-    this.style.background = color
-    precioMaximo.innerText = `USD ${this.value}`
-}
+const menorPrecio = document.querySelector("#menorPrecio")
+menorPrecio.addEventListener('click',() => {
+    mostrarElementos(productosMenor.sort(((a, b) => a.precio - b.precio)))
+})
 
-
-
-
-/*********************************************************************************************************************************************************/
-/******************************************************************** DECLARACIÓN DE ARRAYS **************************************************************/
-/*********************************************************************************************************************************************************/
-
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guardado un carrito en Local Storage lo asigno a carrito, sino le asigno un array vacio
-const productosMayor = [...productos]
-const productosMenor = [...productos]
-
-
-
-productosMayor.sort(((a, b) => b.precio - a.precio));
-productosMenor.sort(((a, b) => a.precio - b.precio));
-
-console.log(productosMayor)
-console.log(productosMenor)
 /*********************************************************************************************************************************************************/
 /********************************************************************** MOSTRAR PRODUCTOS ****************************************************************/
 /*********************************************************************************************************************************************************/
@@ -97,7 +79,6 @@ function agregarProductoCarrito (id) {
 
     if(existe){
         carrito[id].cantidad++
-        console.log(carrito[id].cantidad)
         localStorage.setItem('carrito',JSON.stringify(carrito))
     } else{
         
@@ -228,7 +209,7 @@ function incrementarCantidad (id){
 
 function setearCantidad(id, valor){
     const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
-    carrito[productoSelecionado].cantidad = valor
+    carrito[productoSelecionado].cantidad = parseInt(valor)
     localStorage.setItem('carrito',JSON.stringify(carrito))
     sumarTotal ()
 }
