@@ -18,6 +18,7 @@ const totalCarrito = document.querySelector("#totalCarrito") // contenedor para 
 
 const linkCarrito = document.querySelector("#linkCarrito") // al presionar sobre el logo del carrito llamo a la función para mostrar los elementos en el carrito
 linkCarrito.addEventListener('click',() => {
+    
     agregarElmentoCarrito (carrito)
 })
 
@@ -101,7 +102,8 @@ function mostrarElementos (array){
         let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
     
         btnAgregarCarrito.addEventListener('click',() => {
-                agregarProductoCarrito (producto.id)
+            //if (producto.id == 22) console.log(carrito)
+            agregarProductoCarrito (producto.id)
         })
     })
 }
@@ -109,9 +111,9 @@ function mostrarElementos (array){
 //Función para agregar prodcutos al carrito de compras
 function agregarProductoCarrito (id) {
     const existe = carrito.some( (prod) => prod.id === id)
-
-    if(existe){
-        carrito[id].cantidad++
+    const index = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
+    if(existe){   
+        carrito[index].cantidad++
         localStorage.setItem('carrito',JSON.stringify(carrito))
     } else{
         
@@ -249,7 +251,7 @@ function incrementarCantidad (id){
 //Función para caputrar la cantidad de productos ingresados manualmente
 function setearCantidad(id, valor){
     const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
-    carrito[productoSelecionado].cantidad = parseInt(valor)
+    carrito[productoSelecionado].cantidad = valor
     localStorage.setItem('carrito',JSON.stringify(carrito))
     sumarTotal ()
 }
@@ -285,6 +287,7 @@ function limpiarPantallaCarrito (){
 
 //Funcion para resetear carrito
 function limpiarCarrtio(){
+    contadorCarrito.innerText = "0"
     carrito = []
     localStorage.setItem('carrito',JSON.stringify(carrito))
 }
