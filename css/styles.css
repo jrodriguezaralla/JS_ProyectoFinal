@@ -8448,3 +8448,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .slider:hover {
   transition: box-shadow 0.3s ease-in;
   box-shadow: 2px 8px 13px -3px rgba(116, 114, 114, 0.75); }
+
+body.swal2-shown > [aria-hidden="true"] {
+  transition: 0.1s filter;
+  filter: blur(10px); }

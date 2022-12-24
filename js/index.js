@@ -65,6 +65,8 @@ menorPrecio.addEventListener('click',() => {
     mostrarElementos(productosMenor.sort(((a, b) => a.precio - b.precio)))
 })
 
+
+
 /*********************************************************************************************************************************************************/
 /********************************************************************** MOSTRAR PRODUCTOS ****************************************************************/
 /*********************************************************************************************************************************************************/
@@ -76,6 +78,34 @@ mostrarElementos(productos) //muestro productos de forma dinamica
 /*********************************************************************************************************************************************************/
 /****************************************************************** DECLARACIÓN DE FUNCIONES *************************************************************/
 /*********************************************************************************************************************************************************/
+//Funcion para mostrar en pantalla los productos que recibe por parametros
+function mostrarElementos (array){
+    listado.innerHTML = ""
+    array.forEach(producto =>{
+        let div = document.createElement("div")
+        div.className = "card card_producto"
+        div.innerHTML = `
+                        <div class="card-header">
+                            <h5 class="m-0 fw-semibold fs-5">${producto.modelo}</h5>
+                        </div>
+                        <div class="d-flex flex-column justify-content-between align-items-center p-2">    
+                            <img class="card-img" src="./imagenes/${producto.imagen}" alt="img_${producto.modelo}">
+                            <p class="fw-lighter">${producto.descripcion}</p>
+                            <p class="fw-bold fst-italic fs-5">${producto.precio} USD</p>
+                            <div class="d-flex justify-content-center">
+                                <button id="agregar${producto.id}" class="btnAgregarCarrito btn btn-dark" type="submit">Agregar al carrito</button>
+                            </div>
+                        </div>
+                        `
+        listado.append(div)
+        let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
+    
+        btnAgregarCarrito.addEventListener('click',() => {
+                agregarProductoCarrito (producto.id)
+        })
+    })
+}
+
 //Función para agregar prodcutos al carrito de compras
 function agregarProductoCarrito (id) {
     const existe = carrito.some( (prod) => prod.id === id)
@@ -107,7 +137,7 @@ function agregarElmentoCarrito (dato){
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body p-0 px-1 position-relative">
-                                        <h5 class="card-title m-0 fs-6">${elemento.marca} - ${elemento.modelo}</h5>
+                                        <h5 class="card-title m-0 fs-6 pe-4">${elemento.marca} - ${elemento.modelo}</h5>
                                         <p class="card-text m-0 fs-6 pe-3">${elemento.descripcion}</p>
                                         <div class="d-flex flex-row py-2 justify-content-between">
                                             <div class="btn-group btn-group-sm container-num">
@@ -144,7 +174,7 @@ function agregarElmentoCarrito (dato){
             //asigno funcionalidad a cada input cantidad
             let inputCantidad = document.querySelector(`#inputCantidad${elemento.id}`)
             inputCantidad.addEventListener('input',() => {
-                setearCantidad(elemento.id, inputCantidad.value)
+                setearCantidad(elemento.id, parseInt(inputCantidad.value))
             })
 
         })
@@ -153,9 +183,7 @@ function agregarElmentoCarrito (dato){
 
     // Si no hay productos limpio el contenedor
     if (carrito.length === 0){
-        contenedorCarrito.innerHTML = ""
-        contenedorCarrito.innerText = "Agregue productos al carrito"
-        totalCarrito.innerText = ""
+        limpiarPantallaCarrito()
     }
 }
 
@@ -173,13 +201,21 @@ function mostrarTotal (valor){
     div.className = "d-flex justify-content-around p-2"
     div.innerHTML = `
                     <div class="d-flex justify-content-center align-items-center">
-                    <a class="btn btn-dark" href="../html/compra.html" role="button" target="_blank">Comprar</a>
+                    <a class="btn btn-dark" role="button" id="btnComprar">Comprar</a>
                     </div>
                     <div class="d-flex justify-content-center align-items-center fs-4 fw-bold">
                         <p class="m-0">Total: ${valor} USD</p>
                     </div>
                     `
     totalCarrito.append(div)
+    const btnComprar = document.querySelector("#btnComprar")
+    btnComprar.addEventListener('click',() => {
+        limpiarPantallaCarrito()
+        limpiarCarrtio()
+    Swal.fire({
+        title: '¡Gracias por su compra!'
+    })      
+})
 }
 
 //Función para eliminar los productos del carrito
@@ -240,30 +276,15 @@ function filtroTecnologias(){
     })
 }
 
-//Funcion para mostrar en pantalla los productos que recibe por parametros
-function mostrarElementos (array){
-    listado.innerHTML = ""
-    array.forEach(producto =>{
-        let div = document.createElement("div")
-        div.className = "card card_producto"
-        div.innerHTML = `
-                        <div class="card-header">
-                            <h5 class="m-0 fw-semibold fs-5">${producto.modelo}</h5>
-                        </div>
-                        <div class="d-flex flex-column justify-content-between align-items-center p-2">    
-                            <img class="card-img" src="./imagenes/${producto.imagen}" alt="img_${producto.modelo}">
-                            <p class="fw-lighter">${producto.descripcion}</p>
-                            <p class="fw-bold fst-italic fs-5">${producto.precio} USD</p>
-                            <div class="d-flex justify-content-center">
-                                <button id="agregar${producto.id}" class="btnAgregarCarrito btn btn-dark" type="submit">Agregar al carrito</button>
-                            </div>
-                        </div>
-                        `
-        listado.append(div)
-        let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
-    
-        btnAgregarCarrito.addEventListener('click',() => {
-                agregarProductoCarrito (producto.id)
-        })
-    })
+//Funcion para borrar los elementos del carrito
+function limpiarPantallaCarrito (){
+    contenedorCarrito.innerHTML = ""
+    contenedorCarrito.innerText = "Agregue productos al carrito"
+    totalCarrito.innerText = ""
+}
+
+//Funcion para resetear carrito
+function limpiarCarrtio(){
+    carrito = []
+    localStorage.setItem('carrito',JSON.stringify(carrito))
 }
