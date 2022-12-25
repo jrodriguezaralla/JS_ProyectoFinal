@@ -102,7 +102,6 @@ function mostrarElementos (array){
         let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
     
         btnAgregarCarrito.addEventListener('click',() => {
-            //if (producto.id == 22) console.log(carrito)
             agregarProductoCarrito (producto.id)
         })
     })
