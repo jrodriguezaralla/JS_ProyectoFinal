@@ -8410,11 +8410,7 @@ textarea.form-control-lg {
   width: 100%; }
 
 input[type="number"] {
-<<<<<<< HEAD
-  width: 70%;
-=======
   width: 40%;
->>>>>>> pre-entrega3
   text-align: center; }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -8423,9 +8419,6 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0; }
 
 .container-num {
-<<<<<<< HEAD
-  width: 50%; }
-=======
   width: 55%; }
 
 .filtro {
@@ -8453,10 +8446,9 @@ input[type="number"]::-webkit-inner-spin-button {
   background: linear-gradient(to-right, grey 0%, black 100%); }
 
 .slider:hover {
-  transition: box-shadow 0.3s ease-in;
+  transition: box-shadow npm0 0.3s ease-in;
   box-shadow: 2px 8px 13px -3px rgba(116, 114, 114, 0.75); }
 
 body.swal2-shown > [aria-hidden="true"] {
   transition: 0.1s filter;
   filter: blur(10px); }
->>>>>>> pre-entrega3
