@@ -274,7 +274,7 @@ function filtroMarcas (){
             .then(data => {
                 const productosFiltrados = data.filter(elemento => elemento.marca.toLowerCase() == e.value.toLowerCase()) // busco por el id el producto que el usuario eligio agregar
                 mostrarElementos(productosFiltrados)
-            }) //muestro productos de forma dinamica
+            })
             
         }
     })
@@ -285,8 +285,12 @@ function filtroTecnologias(){
     const filtroTecnologia = document.querySelectorAll(".filtro_tecnologia")
     filtroTecnologia.forEach((e)=>{
         if (e.checked == true){
-            const productosFiltrados = productos.filter(elemento => elemento.descripcion.includes(e.value.toUpperCase())) // busco si en descripcion esta la palabra PURO o CALCIO
-            mostrarElementos(productosFiltrados)
+            fetch('../datos.json')
+            .then(res => res.json())
+            .then(data => {
+                const productosFiltrados = data.filter(elemento => elemento.descripcion.includes(e.value.toUpperCase())) // busco si en descripcion esta la palabra PURO o CALCIO
+                mostrarElementos(productosFiltrados)
+            })
         }
     })
 }
