@@ -269,8 +269,13 @@ function filtroMarcas (){
     const filtroMarca = document.querySelectorAll(".filtro_marca")
     filtroMarca.forEach((e)=>{
         if (e.checked == true){
-            const productosFiltrados = productos.filter(elemento => elemento.marca.toLowerCase() == e.value.toLowerCase()) // busco por el id el producto que el usuario eligio agregar
-            mostrarElementos(productosFiltrados)
+            fetch('../datos.json')
+            .then(res => res.json())
+            .then(data => {
+                const productosFiltrados = data.filter(elemento => elemento.marca.toLowerCase() == e.value.toLowerCase()) // busco por el id el producto que el usuario eligio agregar
+                mostrarElementos(productosFiltrados)
+            }) //muestro productos de forma dinamica
+            
         }
     })
 }
