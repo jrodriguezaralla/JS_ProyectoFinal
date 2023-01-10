@@ -50,7 +50,9 @@ btnFiltroTecnologias.addEventListener('click',() => {
 //limpio los filtros seleccionados
 const btnLimpiarFiltros = document.querySelector("#btnLimpiarFiltros")
 btnLimpiarFiltros.addEventListener('click',() => {
-    mostrarElementos(productos)
+    fetch('../datos.json')
+    .then(res => res.json())
+    .then(data => mostrarElementos(data)) //muestro productos de forma dinamica
 })
 
 //Filtro para ordenar de mayor a menor precio
