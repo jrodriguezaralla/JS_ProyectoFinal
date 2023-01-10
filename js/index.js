@@ -56,13 +56,17 @@ btnLimpiarFiltros.addEventListener('click',() => {
 //Filtro para ordenar de mayor a menor precio
 const mayorPrecio = document.querySelector("#mayorPrecio")
 mayorPrecio.addEventListener('click',() => {
-    mostrarElementos(productosMayor.sort(((a, b) => b.precio - a.precio)))
+    fetch('../datos.json')
+    .then(res => res.json())
+    .then(data => mostrarElementos(data.sort(((a, b) => b.precio - a.precio))))
 })
 
 //Filtro para ordenar de menor a mayor precio
 const menorPrecio = document.querySelector("#menorPrecio")
 menorPrecio.addEventListener('click',() => {
-    mostrarElementos(productosMenor.sort(((a, b) => a.precio - b.precio)))
+    fetch('../datos.json')
+    .then(res => res.json())
+    .then(data => mostrarElementos(data.sort(((a, b) => a.precio - b.precio)))) 
 })
 
 
