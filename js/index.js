@@ -4,8 +4,8 @@
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [] // si tengo guardado un carrito en Local Storage lo asigno a carrito, sino le asigno un array vacio
 //arrays auxiliarers con copia de productos para no modificar el original al ordenarlos
-const productosMayor = [...productos]
-const productosMenor = [...productos]
+//const productosMayor = [...productos]
+//const productosMenor = [...productos]
 
 /*********************************************************************************************************************************************************/
 /****************************************************************** DECLARACIÓN DE VARIABLES *************************************************************/
@@ -18,7 +18,6 @@ const totalCarrito = document.querySelector("#totalCarrito") // contenedor para 
 
 const linkCarrito = document.querySelector("#linkCarrito") // al presionar sobre el logo del carrito llamo a la función para mostrar los elementos en el carrito
 linkCarrito.addEventListener('click',() => {
-    
     agregarElmentoCarrito (carrito)
 })
 
@@ -73,7 +72,9 @@ menorPrecio.addEventListener('click',() => {
 /*********************************************************************************************************************************************************/
 
 contadorCarrito.innerText = `${carrito.length}` // actualizo contador de carrito con los items que tenga guardados
-mostrarElementos(productos) //muestro productos de forma dinamica
+fetch('../datos.json')
+.then(res => res.json())
+.then(data => mostrarElementos(data)) //muestro productos de forma dinamica
 
 
 /*********************************************************************************************************************************************************/
@@ -94,21 +95,23 @@ function mostrarElementos (array){
                             <p class="fw-lighter">${producto.descripcion}</p>
                             <p class="fw-bold fst-italic fs-5">${producto.precio} USD</p>
                             <div class="d-flex justify-content-center">
-                                <button id="agregar${producto.id}" class="btnAgregarCarrito btn btn-dark" type="submit">Agregar al carrito</button>
+                                <button id="${producto.id}" class="btnAgregarCarrito btn btn-dark" type="submit">Agregar al carrito</button>
                             </div>
                         </div>
                         `
         listado.append(div)
-        let btnAgregarCarrito = document.querySelector(`#agregar${producto.id}`) // NodeList = [button#1, button#2 .... , button#n]
+    })
+    let btnAgregarCarrito = document.querySelectorAll('.btnAgregarCarrito') // NodeList = [button#1, button#2 .... , button#n]
     
-        btnAgregarCarrito.addEventListener('click',() => {
-            agregarProductoCarrito (producto.id)
+    btnAgregarCarrito.forEach(el => {
+        el.addEventListener('click',(e) => {
+            agregarProductoCarrito (parseInt(e.target.id), array)
         })
     })
 }
 
 //Función para agregar prodcutos al carrito de compras
-function agregarProductoCarrito (id) {
+function agregarProductoCarrito (id, data) {
     const existe = carrito.some( (prod) => prod.id === id)
     const index = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
     if(existe){   
@@ -116,7 +119,7 @@ function agregarProductoCarrito (id) {
         localStorage.setItem('carrito',JSON.stringify(carrito))
     } else{
         
-        const productoSelecionado = productos.find(elemento => elemento.id === id) // busco por el id el producto que el usuario eligio agregar
+        const productoSelecionado = data.find(elemento => elemento.id === id) // busco por el id el producto que el usuario eligio agregar
         carrito.push(productoSelecionado) // lo pusheo al carrito
         localStorage.setItem('carrito',JSON.stringify(carrito))
         contadorCarrito.innerText = `${carrito.length}`
