@@ -47,7 +47,7 @@ btnFiltroTecnologias.addEventListener('click',() => {
 //limpio los filtros seleccionados
 const btnLimpiarFiltros = document.querySelector("#btnLimpiarFiltros")
 btnLimpiarFiltros.addEventListener('click',() => {
-    fetch('./datos.json')
+    fetch("./datos.json")
     .then(res => res.json())
     .then(data => mostrarElementos(data)) //muestro productos de forma dinamica
 })
@@ -55,7 +55,7 @@ btnLimpiarFiltros.addEventListener('click',() => {
 //Filtro para ordenar de mayor a menor precio
 const mayorPrecio = document.querySelector("#mayorPrecio")
 mayorPrecio.addEventListener('click',() => {
-    fetch('./datos.json')
+    fetch("./datos.json")
     .then(res => res.json())
     .then(data => mostrarElementos(data.sort(((a, b) => b.precio - a.precio))))
 })
@@ -63,7 +63,7 @@ mayorPrecio.addEventListener('click',() => {
 //Filtro para ordenar de menor a mayor precio
 const menorPrecio = document.querySelector("#menorPrecio")
 menorPrecio.addEventListener('click',() => {
-    fetch('./datos.json')
+    fetch("./datos.json")
     .then(res => res.json())
     .then(data => mostrarElementos(data.sort(((a, b) => a.precio - b.precio)))) 
 })
@@ -73,7 +73,7 @@ menorPrecio.addEventListener('click',() => {
 /*********************************************************************************************************************************************************/
 
 contadorCarrito.innerText = `${carrito.length}` // actualizo contador de carrito con los items que tenga guardados
-fetch('./datos.json')
+fetch("./datos.json")
 .then(res => res.json())
 .then(data => mostrarElementos(data)) //muestro productos de forma dinamica
 
@@ -268,7 +268,7 @@ function filtroMarcas (){
     const filtroMarca = document.querySelectorAll(".filtro_marca")
     filtroMarca.forEach((e)=>{
         if (e.checked == true){
-            fetch('./datos.json')
+            fetch("./datos.json")
             .then(res => res.json())
             .then(data => {
                 const productosFiltrados = data.filter(elemento => elemento.marca.toLowerCase() == e.value.toLowerCase()) // busco por el id el producto que el usuario eligio agregar
@@ -284,7 +284,7 @@ function filtroTecnologias(){
     const filtroTecnologia = document.querySelectorAll(".filtro_tecnologia")
     filtroTecnologia.forEach((e)=>{
         if (e.checked == true){
-            fetch('./datos.json')
+            fetch("./datos.json")
             .then(res => res.json())
             .then(data => {
                 const productosFiltrados = data.filter(elemento => elemento.descripcion.includes(e.value.toUpperCase())) // busco si en descripcion esta la palabra PURO o CALCIO
