@@ -4,7 +4,6 @@
    * Copyright 2011-2022 Twitter, Inc.
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    */
-@import url(../node_modules/bootstrap-icons/font/bootstrap-icons.css);
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -8423,31 +8422,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .filtro {
   display: none; }
-
-.slider {
-  appearance: none;
-  width: 100%;
-  height: 15px;
-  background: white;
-  transition: background 450ms ease-in;
-  border-radius: 25px;
-  border: 1px solid rgba(99, 99, 99, 0.712); }
-
-.slider::-webkit-slider-thumb {
-  cursor: pointer;
-  appearance: none;
-  height: 20px;
-  width: 20px;
-  background-color: black;
-  border-radius: 50%; }
-
-.slider::-webkit-range-progress {
-  height: 500px;
-  background: linear-gradient(to-right, grey 0%, black 100%); }
-
-.slider:hover {
-  transition: box-shadow npm0 0.3s ease-in;
-  box-shadow: 2px 8px 13px -3px rgba(116, 114, 114, 0.75); }
 
 body.swal2-shown > [aria-hidden="true"] {
   transition: 0.1s filter;
