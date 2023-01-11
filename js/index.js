@@ -231,7 +231,8 @@ function mostrarTotal (valor){
 //Función para eliminar los productos del carrito
 function eliminarDelCarrito (id){
     const productoSelecionado = carrito.indexOf(carrito.find( (elemento) => elemento.id === id ))
-    carrito.splice(productoSelecionado,1)
+    carrito[productoSelecionado].cantidad = 1 //reseteo cantidad
+    carrito.splice(productoSelecionado,1) //elimino elemento
     localStorage.setItem('carrito',JSON.stringify(carrito))
     contadorCarrito.innerText = `${carrito.length}`
     agregarElmentoCarrito (carrito)
@@ -305,6 +306,9 @@ function limpiarPantallaCarrito (){
 //Funcion para resetear carrito
 function limpiarCarrtio(){
     contadorCarrito.innerText = "0"
+    carrito.forEach((num)=>{
+        num.cantidad = 1 //reseteo cantidad
+    })
     carrito = []
     localStorage.setItem('carrito',JSON.stringify(carrito))
 }
